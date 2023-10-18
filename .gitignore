@@ -1,5 +1,6 @@
 .vs
 .trash
 x64
+bin
 *.obj
 
