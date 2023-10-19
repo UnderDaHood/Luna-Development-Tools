@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Water Monster by hotta.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -141,6 +144,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Scyndi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Francis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Rachel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Water Monster by hotta.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

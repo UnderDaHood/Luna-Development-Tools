@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 Please note that some references to data like pictures or audio, do not automatically
 fall under this licenses. Mostly this is noted in the respective files.
 
-Version: 23.10.18
+Version: 23.10.19
 End License block -->
 <Window x:Class="Foe.MainWindow"
 		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -121,74 +121,211 @@ End License block -->
 							<Label Content="Easy" HorizontalAlignment="Left" Height="30" Margin="150,130,0,0" Foreground="#b4ff00" VerticalAlignment="Top"/>
 							<Label Content="Regular" HorizontalAlignment="Left" Height="30" Margin="200,130,0,0" Foreground="#ffb400" VerticalAlignment="Top"/>
 							<Label Content="Hard" HorizontalAlignment="Left" Height="30" Margin="250,130,0,0" Foreground="#ff0000" VerticalAlignment="Top"/>
-                            <Grid Margin="0,160,0,0"  Height="30" VerticalAlignment="Top">
-                                <Label Content="Strength" Foreground="#00b4ff"/>
-                                <TextBox x:Name="sk1Strength" Foreground="#b4ff00" Background="#000f00" Width="50" Margin="150,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <TextBox x:Name="sk2Strength" Foreground="#ffb400" Background="#0f0b00" Width="50" Margin="200,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <TextBox x:Name="sk3Strength" Foreground="#ff0000" Background="#0f0000" Width="50" Margin="250,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <CheckBox x:Name="LnkStrength" Foreground="#00b4ff" Margin="300,0,0,0" HorizontalAlignment="Left" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
-                            </Grid>
-                            <Grid Margin="0,190,0,0"  Height="30" VerticalAlignment="Top">
-                                <Label Content="Defense" Foreground="#00b4ff"/>
-                                <TextBox x:Name="sk1Defense" Foreground="#b4ff00" Background="#000f00" Width="50" Margin="150,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <TextBox x:Name="sk2Defense" Foreground="#ffb400" Background="#0f0b00" Width="50" Margin="200,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <TextBox x:Name="sk3Defense" Foreground="#ff0000" Background="#0f0000" Width="50" Margin="250,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <CheckBox x:Name="LnkDefense" Foreground="#00b4ff" Margin="300,0,0,0" HorizontalAlignment="Left" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
-                            </Grid>
-                            <Grid Margin="0,220,0,0"  Height="30" VerticalAlignment="Top">
-                                <Label Content="Intelligence" Foreground="#00b4ff"/>
-                                <TextBox x:Name="sk1Intelligence" Foreground="#b4ff00" Background="#000f00" Width="50" Margin="150,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <TextBox x:Name="sk2Intelligence" Foreground="#ffb400" Background="#0f0b00" Width="50" Margin="200,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <TextBox x:Name="sk3Intelligence" Foreground="#ff0000" Background="#0f0000" Width="50" Margin="250,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <CheckBox x:Name="LnkIntelligence" Foreground="#00b4ff" Margin="300,0,0,0" HorizontalAlignment="Left" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
-                            </Grid>
-                            <Grid Margin="0,250,0,0"  Height="30" VerticalAlignment="Top">
-                                <Label Content="Resistance" Foreground="#00b4ff"/>
-                                <TextBox x:Name="sk1Resistance" Foreground="#b4ff00" Background="#000f00" Width="50" Margin="150,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <TextBox x:Name="sk2Resistance" Foreground="#ffb400" Background="#0f0b00" Width="50" Margin="200,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <TextBox x:Name="sk3Resistance" Foreground="#ff0000" Background="#0f0000" Width="50" Margin="250,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <CheckBox x:Name="LnkResistance" Foreground="#00b4ff" Margin="300,0,0,0" HorizontalAlignment="Left" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
-                            </Grid>
-                            <Grid Margin="0,280,0,0"  Height="30" VerticalAlignment="Top">
-                                <Label Content="Agility" Foreground="#00b4ff"/>
-                                <TextBox x:Name="sk1Agility" Foreground="#b4ff00" Background="#000f00" Width="50" Margin="150,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <TextBox x:Name="sk2Agility" Foreground="#ffb400" Background="#0f0b00" Width="50" Margin="200,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <TextBox x:Name="sk3Agility" Foreground="#ff0000" Background="#0f0000" Width="50" Margin="250,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <CheckBox x:Name="LnkAgility" Foreground="#00b4ff" Margin="300,0,0,0" HorizontalAlignment="Left" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
-                            </Grid>
-                            <Grid Margin="0,310,0,0"  Height="30" VerticalAlignment="Top">
-                                <Label Content="Accuracy" Foreground="#00b4ff"/>
-                                <TextBox x:Name="sk1Accuracy" Foreground="#b4ff00" Background="#000f00" Width="50" Margin="150,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <TextBox x:Name="sk2Accuracy" Foreground="#ffb400" Background="#0f0b00" Width="50" Margin="200,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <TextBox x:Name="sk3Accuracy" Foreground="#ff0000" Background="#0f0000" Width="50" Margin="250,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <CheckBox x:Name="LnkAccuracy" Foreground="#00b4ff" Margin="300,0,0,0" HorizontalAlignment="Left" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
-                            </Grid>
-                            <Grid Margin="0,340,0,0"  Height="30" VerticalAlignment="Top">
-                                <Label Content="Evasion" Foreground="#00b4ff"/>
-                                <TextBox x:Name="sk1Evasion" Foreground="#b4ff00" Background="#000f00" Width="50" Margin="150,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <TextBox x:Name="sk2Evasion" Foreground="#ffb400" Background="#0f0b00" Width="50" Margin="200,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <TextBox x:Name="sk3Evasion" Foreground="#ff0000" Background="#0f0000" Width="50" Margin="250,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <CheckBox x:Name="LnkEvasion" Foreground="#00b4ff" Margin="300,0,0,0" HorizontalAlignment="Left" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
-                            </Grid>
-                            <Grid Margin="0,370,0,0"  Height="30" VerticalAlignment="Top">
-                                <Label Content="Hit points" Foreground="#00b4ff"/>
-                                <TextBox x:Name="sk1HP" Foreground="#b4ff00" Background="#000f00" Width="50" Margin="150,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <TextBox x:Name="sk2HP" Foreground="#ffb400" Background="#0f0b00" Width="50" Margin="200,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <TextBox x:Name="sk3HP" Foreground="#ff0000" Background="#0f0000" Width="50" Margin="250,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
-                                <CheckBox x:Name="LnkHP" Foreground="#00b4ff" Margin="300,0,0,0" HorizontalAlignment="Left" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
-                            </Grid>
-                            <Image VerticalAlignment="Bottom" HorizontalAlignment="Right" Stretch="None" Source="/Scyndi.png" />
-                        </Grid>
+							<Grid Margin="0,160,0,0"  Height="30" VerticalAlignment="Top">
+								<Label Content="Strength" Foreground="#00b4ff"/>
+								<TextBox x:Name="sk1Strength" Foreground="#b4ff00" Background="#000f00" Width="50" Margin="150,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<TextBox x:Name="sk2Strength" Foreground="#ffb400" Background="#0f0b00" Width="50" Margin="200,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<TextBox x:Name="sk3Strength" Foreground="#ff0000" Background="#0f0000" Width="50" Margin="250,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<CheckBox x:Name="LnkStrength" Foreground="#00b4ff" Margin="300,0,0,0" HorizontalAlignment="Left" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
+							</Grid>
+							<Grid Margin="0,190,0,0"  Height="30" VerticalAlignment="Top">
+								<Label Content="Defense" Foreground="#00b4ff"/>
+								<TextBox x:Name="sk1Defense" Foreground="#b4ff00" Background="#000f00" Width="50" Margin="150,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<TextBox x:Name="sk2Defense" Foreground="#ffb400" Background="#0f0b00" Width="50" Margin="200,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<TextBox x:Name="sk3Defense" Foreground="#ff0000" Background="#0f0000" Width="50" Margin="250,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<CheckBox x:Name="LnkDefense" Foreground="#00b4ff" Margin="300,0,0,0" HorizontalAlignment="Left" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
+							</Grid>
+							<Grid Margin="0,220,0,0"  Height="30" VerticalAlignment="Top">
+								<Label Content="Intelligence" Foreground="#00b4ff"/>
+								<TextBox x:Name="sk1Intelligence" Foreground="#b4ff00" Background="#000f00" Width="50" Margin="150,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<TextBox x:Name="sk2Intelligence" Foreground="#ffb400" Background="#0f0b00" Width="50" Margin="200,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<TextBox x:Name="sk3Intelligence" Foreground="#ff0000" Background="#0f0000" Width="50" Margin="250,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<CheckBox x:Name="LnkIntelligence" Foreground="#00b4ff" Margin="300,0,0,0" HorizontalAlignment="Left" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
+							</Grid>
+							<Grid Margin="0,250,0,0"  Height="30" VerticalAlignment="Top">
+								<Label Content="Resistance" Foreground="#00b4ff"/>
+								<TextBox x:Name="sk1Resistance" Foreground="#b4ff00" Background="#000f00" Width="50" Margin="150,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<TextBox x:Name="sk2Resistance" Foreground="#ffb400" Background="#0f0b00" Width="50" Margin="200,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<TextBox x:Name="sk3Resistance" Foreground="#ff0000" Background="#0f0000" Width="50" Margin="250,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<CheckBox x:Name="LnkResistance" Foreground="#00b4ff" Margin="300,0,0,0" HorizontalAlignment="Left" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
+							</Grid>
+							<Grid Margin="0,280,0,0"  Height="30" VerticalAlignment="Top">
+								<Label Content="Agility" Foreground="#00b4ff"/>
+								<TextBox x:Name="sk1Agility" Foreground="#b4ff00" Background="#000f00" Width="50" Margin="150,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<TextBox x:Name="sk2Agility" Foreground="#ffb400" Background="#0f0b00" Width="50" Margin="200,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<TextBox x:Name="sk3Agility" Foreground="#ff0000" Background="#0f0000" Width="50" Margin="250,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<CheckBox x:Name="LnkAgility" Foreground="#00b4ff" Margin="300,0,0,0" HorizontalAlignment="Left" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
+							</Grid>
+							<Grid Margin="0,310,0,0"  Height="30" VerticalAlignment="Top">
+								<Label Content="Accuracy" Foreground="#00b4ff"/>
+								<TextBox x:Name="sk1Accuracy" Foreground="#b4ff00" Background="#000f00" Width="50" Margin="150,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<TextBox x:Name="sk2Accuracy" Foreground="#ffb400" Background="#0f0b00" Width="50" Margin="200,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<TextBox x:Name="sk3Accuracy" Foreground="#ff0000" Background="#0f0000" Width="50" Margin="250,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<CheckBox x:Name="LnkAccuracy" Foreground="#00b4ff" Margin="300,0,0,0" HorizontalAlignment="Left" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
+							</Grid>
+							<Grid Margin="0,340,0,0"  Height="30" VerticalAlignment="Top">
+								<Label Content="Evasion" Foreground="#00b4ff"/>
+								<TextBox x:Name="sk1Evasion" Foreground="#b4ff00" Background="#000f00" Width="50" Margin="150,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<TextBox x:Name="sk2Evasion" Foreground="#ffb400" Background="#0f0b00" Width="50" Margin="200,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<TextBox x:Name="sk3Evasion" Foreground="#ff0000" Background="#0f0000" Width="50" Margin="250,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<CheckBox x:Name="LnkEvasion" Foreground="#00b4ff" Margin="300,0,0,0" HorizontalAlignment="Left" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
+							</Grid>
+							<Grid Margin="0,370,0,0"  Height="30" VerticalAlignment="Top">
+								<Label Content="Hit points" Foreground="#00b4ff"/>
+								<TextBox x:Name="sk1HP" Foreground="#b4ff00" Background="#000f00" Width="50" Margin="150,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<TextBox x:Name="sk2HP" Foreground="#ffb400" Background="#0f0b00" Width="50" Margin="200,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<TextBox x:Name="sk3HP" Foreground="#ff0000" Background="#0f0000" Width="50" Margin="250,0,0,0" HorizontalAlignment="Left" TextChanged="StatChanged"/>
+								<CheckBox x:Name="LnkHP" Foreground="#00b4ff" Margin="300,0,0,0" HorizontalAlignment="Left" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
+							</Grid>
+							<Image VerticalAlignment="Bottom" HorizontalAlignment="Right" Stretch="None" Source="/Scyndi.png" />
+						</Grid>
 					</TabItem>
 					<TabItem Header="Elemental Restistance">
-						
+						<Grid>
+							<!-- const var Manaments = NewArray("Earth","Wood","Water","Frost","Wind","Lightning","Fire","Lava","Light","Darkness") -->
+							<Grid Margin="0,0,0,0" Height="30" VerticalAlignment="Top">
+								<Label Content="Earth" Foreground="#00b3ff" />
+								<TextBox x:Name="ResistEarth" Margin="150,0,0,0" Width="50" HorizontalAlignment="Left" Foreground="#ffff00" Background="#0f0f00" TextChanged="StatChanged" />
+								<Label Content="Fatal:" Foreground="#ff0000" Margin="250,0,0,0" />
+								<CheckBox x:Name="FatalEarth" Foreground="#ff0000" Content="False" Margin="300,0,0,0"  Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
+							</Grid>
+							<Grid Margin="0,30,0,0" Height="30" VerticalAlignment="Top">
+								<Label Content="Wood" Foreground="#00b3ff" />
+								<TextBox x:Name="ResistWood" Margin="150,0,0,0" Width="50" HorizontalAlignment="Left" Foreground="#ffff00" Background="#0f0f00" TextChanged="StatChanged" />
+								<Label Content="Fatal:" Foreground="#ff0000" Margin="250,0,0,0" />
+								<CheckBox x:Name="FatalWood" Foreground="#ff0000" Content="False" Margin="300,0,0,0"  Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
+							</Grid>
+							<Grid Margin="0,60,0,0" Height="30" VerticalAlignment="Top">
+								<Label Content="Water" Foreground="#00b3ff" />
+								<TextBox x:Name="ResistWater" Margin="150,0,0,0" Width="50" HorizontalAlignment="Left" Foreground="#ffff00" Background="#0f0f00" TextChanged="StatChanged" />
+								<Label Content="Fatal:" Foreground="#ff0000" Margin="250,0,0,0" />
+								<CheckBox x:Name="FatalWater" Foreground="#ff0000" Content="False" Margin="300,0,0,0"  Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
+							</Grid>
+							<Grid Margin="0,90,0,0" Height="30" VerticalAlignment="Top">
+								<Label Content="Frost" Foreground="#00b3ff" />
+								<TextBox x:Name="ResistFrost" Margin="150,0,0,0" Width="50" HorizontalAlignment="Left" Foreground="#ffff00" Background="#0f0f00" TextChanged="StatChanged" />
+								<Label Content="Fatal:" Foreground="#ff0000" Margin="250,0,0,0" />
+								<CheckBox x:Name="FatalFrost" Foreground="#ff0000" Content="False" Margin="300,0,0,0"  Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
+							</Grid>
+							<Grid Margin="0,120,0,0" Height="30" VerticalAlignment="Top">
+								<Label Content="Wind" Foreground="#00b3ff" />
+								<TextBox x:Name="ResistWind" Margin="150,0,0,0" Width="50" HorizontalAlignment="Left" Foreground="#ffff00" Background="#0f0f00" TextChanged="StatChanged" />
+								<Label Content="Fatal:" Foreground="#ff0000" Margin="250,0,0,0" />
+								<CheckBox x:Name="FatalWind" Foreground="#ff0000" Content="False" Margin="300,0,0,0"  Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
+							</Grid>
+							<Grid Margin="0,150,0,0" Height="30" VerticalAlignment="Top">
+								<Label Content="Lightning" Foreground="#00b3ff" />
+								<TextBox x:Name="ResistLightning" Margin="150,0,0,0" Width="50" HorizontalAlignment="Left" Foreground="#ffff00" Background="#0f0f00" TextChanged="StatChanged" />
+								<Label Content="Fatal:" Foreground="#ff0000" Margin="250,0,0,0" />
+								<CheckBox x:Name="FatalLightning" Foreground="#ff0000" Content="False" Margin="300,0,0,0"  Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
+							</Grid>
+							<Grid Margin="0,180,0,0" Height="30" VerticalAlignment="Top">
+								<Label Content="Fire" Foreground="#00b3ff" />
+								<TextBox x:Name="ResistFire" Margin="150,0,0,0" Width="50" HorizontalAlignment="Left" Foreground="#ffff00" Background="#0f0f00" TextChanged="StatChanged" />
+								<Label Content="Fatal:" Foreground="#ff0000" Margin="250,0,0,0" />
+								<CheckBox x:Name="FatalFire" Foreground="#ff0000" Content="False" Margin="300,0,0,0"  Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
+							</Grid>
+							<Grid Margin="0,210,0,0" Height="30" VerticalAlignment="Top">
+								<Label Content="Lava" Foreground="#00b3ff" />
+								<TextBox x:Name="ResistLava" Margin="150,0,0,0" Width="50" HorizontalAlignment="Left" Foreground="#ffff00" Background="#0f0f00" TextChanged="StatChanged" />
+								<Label Content="Fatal:" Foreground="#ff0000" Margin="250,0,0,0" />
+								<CheckBox x:Name="FatalLava" Foreground="#ff0000" Content="False" Margin="300,0,0,0"  Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
+							</Grid>
+							<Grid Margin="0,240,0,0" Height="30" VerticalAlignment="Top">
+								<Label Content="Light" Foreground="#00b3ff" />
+								<TextBox x:Name="ResistLight" Margin="150,0,0,0" Width="50" HorizontalAlignment="Left" Foreground="#ffff00" Background="#0f0f00" TextChanged="StatChanged" />
+								<Label Content="Fatal:" Foreground="#ff0000" Margin="250,0,0,0" />
+								<CheckBox x:Name="FatalLight" Foreground="#ff0000" Content="False" Margin="300,0,0,0"  Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
+							</Grid>
+							<Grid Margin="0,270,0,0" Height="30" VerticalAlignment="Top">
+								<Label Content="Darkness" Foreground="#00b3ff" />
+								<TextBox x:Name="ResistDarkness" Margin="150,0,0,0" Width="50" HorizontalAlignment="Left" Foreground="#ffff00" Background="#0f0f00" TextChanged="StatChanged" />
+								<Label Content="Fatal:" Foreground="#ff0000" Margin="250,0,0,0" />
+								<CheckBox x:Name="FatalDarkness" Foreground="#ff0000" Content="False" Margin="300,0,0,0"  Checked="CheckBaseEdit" Unchecked="CheckBaseEdit"/>
+							</Grid>
+							<Image HorizontalAlignment="Right" VerticalAlignment="Bottom" Stretch="None" Source="/Francis.png" />
+						</Grid>
 					</TabItem>
 					<TabItem Header="Status Restistance">
+                        <Grid>
 
-					</TabItem>
+                            <Label Content="Poison" Foreground="#00b4ff" Height="30" Margin="0,0,0,0" VerticalAlignment="Top" />
+                            <TextBox x:Name="ResistPoison" Margin="150,0,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
+                            <CheckBox x:Name="StartStatusPoison" Margin="210,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
+
+                            <Label Content="Disease"  Margin="0,30,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
+                            <TextBox x:Name="ResistDisease" Margin="150,30,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
+                            <CheckBox x:Name="StartStatusDisease"  Margin="210,30,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
+
+                            <Label Content="Paralysis"  Margin="0,60,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
+                            <TextBox x:Name="ResistParalysis" Margin="150,60,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
+                            <CheckBox x:Name="StartStatusParalysis"  Margin="210,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
+
+                            <Label Content="Curse"  Margin="0,90,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
+                            <TextBox x:Name="ResistCurse" Margin="150,90,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
+                            <CheckBox x:Name="StartStatusCurse"  Margin="210,90,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
+
+                            <Label Content="Sleep"  Margin="0,120,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
+                            <TextBox x:Name="ResistSleep" Margin="150,120,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
+                            <CheckBox x:Name="StartStatusSleep"  Margin="210,120,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
+
+                            <Label Content="Exhausted"  Margin="0,150,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
+                            <TextBox x:Name="ResistExhausted" Margin="150,150,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
+                            <CheckBox x:Name="StartStatusExhausted"  Margin="210,150,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
+
+                            <Label Content="Death"  Margin="0,180,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
+                            <TextBox x:Name="ResistDeath" Margin="150,180,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
+
+                            <Label Content="Zombie"  Margin="0,210,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
+                            <TextBox x:Name="ResistZombie" Margin="150,210,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
+                            <CheckBox x:Name="StartStatusZombie"  Margin="210,210,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
+
+                            <Label Content="Undead"  Margin="0,240,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
+                            <CheckBox x:Name="StartStatusUndead"  Margin="210,240,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
+                        </Grid>
+                    </TabItem>
 
 					<TabItem Header="Drops">
-
+						<Grid>
+							<Label Content="Experience" Foreground="#00b3ff" Margin="0,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" />
+							<TextBox x:Name="Experience" Foreground="#ffb400" Background="#0f0b00" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,0,0,0" TextChanged="TextBaseEdit"/>
+							<Label Content="Cash" Foreground="#00b3ff" Margin="0,30,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" />
+							<TextBox x:Name="Cash" Foreground="#ffb400" Background="#0f0b00" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,30,0,0" TextChanged="TextBaseEdit"/>
+							<Label Content="Item Drop 1" Foreground="#00b3ff" Margin="0,60,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" />
+							<ComboBox x:Name="ItemDrop1" x:FieldModifier="internal" Margin="150,60,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="200" SelectionChanged="BaseComboChange" />
+							<TextBox x:Name="ItemDrop1Rate" Margin="400,60,0,0" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" Background="Black" TextChanged="TextBaseEdit"/>
+							<Label Content="Item Drop 2" Foreground="#00b3ff" Margin="0,90,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" />
+							<ComboBox x:Name="ItemDrop2" Margin="150,90,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="200" SelectionChanged="BaseComboChange" />
+							<TextBox x:Name="ItemDrop2Rate" x:FieldModifier="internal" Margin="400,90,0,0" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" Background="Black" TextChanged="TextBaseEdit"/>
+							<Label Content="Steal" Foreground="#00b3ff" Margin="0,120,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" />
+							<ComboBox x:Name="ItemSteal" Margin="150,120,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="200" SelectionChanged="BaseComboChange" />
+							<TextBox x:Name="ItemStealRate"  Margin="400,120,0,0" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" Background="Black" TextChanged="TextBaseEdit" />
+							<Grid x:Name="ExtractLeft" Width="400" HorizontalAlignment="Left" Margin="0,180,0,0">
+                                <Label Content="Extract Wood" Margin="0,0,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
+                                <TextBox x:Name="ExtractWood" Margin="150,0,0,0" Foreground="#00ff00" Background="#000f00" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
+                                <Label Content="Extract Lightning" Margin="0,30,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
+                                <TextBox x:Name="ExtractLightning" Margin="150,30,0,0" Foreground="#00ffff" Background="#000f0f" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
+                                <Label Content="Extract Frost" Margin="0,60,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
+                                <TextBox x:Name="ExtractFrost" Margin="150,60,0,0" Foreground="#70ffff" Background="#070f0f" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
+                                <Label Content="Extract Lava" Margin="0,90,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
+                                <TextBox x:Name="ExtractLava" Margin="150,90,0,0" Foreground="#ff7000" Background="#0f0700" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
+                                <Label Content="Extract Light" Margin="0,120,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
+                                <TextBox x:Name="ExtractLight" Margin="150,120,0,0" Foreground="#ffffff" Background="#0f0f0f" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
+                            </Grid>
+                            <Image VerticalAlignment="Bottom" HorizontalAlignment="Right" Stretch="None" Source="/Rachel.png"/>
+							<Grid x:Name="ExtractRight" Width="400" HorizontalAlignment="Right" Margin="0,180,0,0">
+                                <Label Content="Extract Earth" Margin="0,0,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
+                                <TextBox x:Name="ExtractEarth" Margin="150,0,0,0" Foreground="#ffff00" Background="#0f0f00" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
+                                <Label Content="Extract Fire" Margin="0,30,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
+                                <TextBox x:Name="ExtractFire" Margin="150,30,0,0" Foreground="#ff0000" Background="#0f0000" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
+                                <Label Content="Extract Wind" Margin="0,60,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
+                                <TextBox x:Name="ExtractWind" Margin="150,60,0,0" Foreground="#707070" Background="#070707" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
+                                <Label Content="Extract Water" Margin="0,90,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
+                                <TextBox x:Name="ExtractWater" Margin="150,90,0,0" Foreground="#0507ff" Background="#00000f" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
+                                <Label Content="Extract Darkness" Margin="0,120,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
+                                <TextBox x:Name="ExtractDarkness" Margin="150,120,0,0" Foreground="#b400ff" Background="#0b000f" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
+                            </Grid>
+                        </Grid>
 					</TabItem>
 
 				</TabControl>

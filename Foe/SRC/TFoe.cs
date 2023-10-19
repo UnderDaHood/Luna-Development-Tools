@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.10.18
+// Version: 23.10.19
 // EndLic
 using System;
 using System.Collections.Generic;
@@ -43,9 +43,10 @@ namespace Foe {
 
 	internal class TFoe {
 
+		readonly internal static Dictionary<string, TFoe> _Register = new Dictionary<string, TFoe>();
 		readonly internal static Dictionary<TextBox, GINID> TBLink = new Dictionary<TextBox, GINID>();
 		readonly internal static Dictionary<CheckBox, GINID> CBLink = new Dictionary<CheckBox, GINID>();
-		readonly internal static Dictionary<string, TFoe> _Register = new Dictionary<string, TFoe>();
+		readonly internal static Dictionary<ComboBox,GINID> BXLink = new Dictionary<ComboBox,GINID>();
 		readonly internal static Dictionary<TextBox,int> AIActRateLnk = new Dictionary<TextBox,int>();
 		readonly internal static Dictionary<ComboBox,int> AIActTarLnk = new Dictionary<ComboBox,int>();
 		public GINIE Data;
@@ -70,6 +71,7 @@ namespace Foe {
 			Data.NewValue("MetaData", "Boss", $"{qstr.Suffixed(qstr.ExtractDir(n).ToUpper(), "BOSS")}");
 			Data.NewValue("FOE_AI", "Script", "Default");
 			foreach (var LGID in CBLink.Values) if (LGID.Cat == "Link") Data.NewValue("Link", LGID.Val, "True");
+			foreach (var LGID in TBLink) if (LGID.Value.Cat == "Resist_Element") Data.NewValue(LGID.Value.Cat, LGID.Value.Val, "0");
 		}
 
 		static public TFoe Get(string n) {
@@ -98,6 +100,10 @@ namespace Foe {
 		static internal void RegGadget(CheckBox lb, string cat, string val) {
 			CBLink[lb] = new GINID(cat, val);
 		}
+		static internal void RegGadget(ComboBox lb, string cat, string val) {
+			BXLink[lb] = new GINID(cat, val);
+		}
+
 
 		static public void UpdateGadgets() {
 			MainWindow.Me.EditTabber.IsEnabled = Current != null;
@@ -115,6 +121,21 @@ namespace Foe {
 				Debug.WriteLine($"<itb:{itb}>.Key = {itb.Key}; <itb:{itb}>.Value = GINID{'{'}\"{itb.Value.Cat}\",\"{itb.Value.Val}\"{'}'}");
 #endif
 				itb.Key.IsChecked = Current.Data[itb.Value.Cat, itb.Value.Val].ToUpper() == "TRUE";
+			}
+			DirectoryConfig.RefreshDrops();
+			foreach (var itb in BXLink) {
+				switch(itb.Value.Cat.ToUpper()) {
+					case "DROP1":
+					case "DROP2":
+					case "STEAL":
+						for(int i = 0; i < DirectoryConfig.DroppableItems.Count; ++i) {
+							Debug.WriteLine($"Check {itb.Value.Cat} drop: {i} {DirectoryConfig.DroppableItems[i]} == {Current.Data[itb.Value.Cat, itb.Value.Val]} -> {DirectoryConfig.DroppableItems[i] == Current.Data[itb.Value.Cat, itb.Value.Val]}");
+							if (DirectoryConfig.DroppableItems[i] == Current.Data[itb.Value.Cat, itb.Value.Val]) itb.Key.SelectedIndex = i;
+						}
+
+                        break;
+					default: break;
+				}
 			}
 			DirectoryConfig.RefreshIAA();
 			MayEdit =true;

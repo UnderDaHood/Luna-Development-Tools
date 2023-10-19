@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.10.18
+// Version: 23.10.19
 // EndLic
 using System;
 using System.Collections.Generic;
@@ -104,12 +104,61 @@ namespace Foe {
 			}
 		}
 
-        static public void RefreshIAA() {
+		static bool AllowedIAADropPrefix(string abl) {
+			return
+				qstr.Prefixed(abl, "ITM_REG_") ||
+				qstr.Prefixed(abl, "ITM_ALC_") ||
+				qstr.Prefixed(abl, "INGREDIENT_");
+		}
+
+		static public void RefreshIAA() {
 			RefreshIAA(MainWindow.Me.AI_ActionYes, true);
 			RefreshIAA(MainWindow.Me.AI_ActionNo, false);
 			MainWindow.Me.AIGridUpdateShow();
+		}
+
+		internal static List<string> DroppableItems = null;
+
+		static internal void GetDroppableItem(bool Force=false) {
+			if (!Force)	if (DroppableItems != null) return;
+			DroppableItems=new List<string>();
+			Debug.WriteLine($"Searching dir: {IAA}");
+            var liaa = FileList.GetTree(IAA);
+            foreach (var iiaa in liaa) {
+                if (qstr.ExtractExt(iiaa).ToUpper() == "INI") {
+                    var abl = qstr.StripExt(iiaa).ToUpper();
+                    if (AllowedIAADropPrefix(abl)) {
+                        Debug.WriteLine($"Adding IAA: {iiaa}");
+                        DroppableItems.Add(qstr.StripExt(iiaa));
+                    }
+                }
+            }
         }
 
+        static public void RefreshDrops(ComboBox lb) {
+			lb.Items.Clear();
+			if (TFoe.Current == null) return;
+			GetDroppableItem();
+			foreach (var i in DroppableItems) lb.Items.Add(i);
+			/*
+			var liaa = FileList.GetTree(IAA);
+			foreach (var iiaa in liaa) {
+				if (qstr.ExtractExt(iiaa).ToUpper() == "INI") {
+					var abl = qstr.StripExt(iiaa).ToUpper();
+					if (AllowedIAADropPrefix(abl)) {
+						Debug.WriteLine($"Adding IAA: {iiaa}");
+						lb.Items.Add(qstr.StripExt(iiaa));
+					}
+				}
+			}
+			*/
+		}
 
-    }
+		static public void RefreshDrops() {
+			RefreshDrops(MainWindow.Me.ItemDrop1);
+			RefreshDrops(MainWindow.Me.ItemDrop2);
+			RefreshDrops(MainWindow.Me.ItemSteal);
+		}
+
+	}
 }

@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.10.18
+// Version: 23.10.19
 // EndLic
 using System;
 using System.Collections.Generic;
@@ -79,24 +79,86 @@ namespace Foe {
 			TFoe.RegGadget(sk2Resistance, "Stat2", "Resistance");
 			TFoe.RegGadget(sk3Resistance, "Stat3", "Resistance");
 			TFoe.RegGadget(LnkResistance, "Link", "Resistance");
-            TFoe.RegGadget(sk1Agility, "Stat1", "Agility");
-            TFoe.RegGadget(sk2Agility, "Stat2", "Agility");
-            TFoe.RegGadget(sk3Agility, "Stat3", "Agility");
-            TFoe.RegGadget(LnkAgility, "Link", "Agility");
-            TFoe.RegGadget(sk1Accuracy, "Stat1", "Accuracy");
-            TFoe.RegGadget(sk2Accuracy, "Stat2", "Accuracy");
-            TFoe.RegGadget(sk3Accuracy, "Stat3", "Accuracy");
-            TFoe.RegGadget(LnkAccuracy, "Link", "Accuracy");
-            TFoe.RegGadget(sk1Evasion, "Stat1", "Evasion");
-            TFoe.RegGadget(sk2Evasion, "Stat2", "Evasion");
-            TFoe.RegGadget(sk3Evasion, "Stat3", "Evasion");
-            TFoe.RegGadget(LnkEvasion, "Link", "Evasion");
-            TFoe.RegGadget(sk1HP, "Stat1", "HP");
-            TFoe.RegGadget(sk2HP, "Stat2", "HP");
-            TFoe.RegGadget(sk3HP, "Stat3", "HP");
-            TFoe.RegGadget(LnkHP, "Link", "HP");
+			TFoe.RegGadget(sk1Agility, "Stat1", "Agility");
+			TFoe.RegGadget(sk2Agility, "Stat2", "Agility");
+			TFoe.RegGadget(sk3Agility, "Stat3", "Agility");
+			TFoe.RegGadget(LnkAgility, "Link", "Agility");
+			TFoe.RegGadget(sk1Accuracy, "Stat1", "Accuracy");
+			TFoe.RegGadget(sk2Accuracy, "Stat2", "Accuracy");
+			TFoe.RegGadget(sk3Accuracy, "Stat3", "Accuracy");
+			TFoe.RegGadget(LnkAccuracy, "Link", "Accuracy");
+			TFoe.RegGadget(sk1Evasion, "Stat1", "Evasion");
+			TFoe.RegGadget(sk2Evasion, "Stat2", "Evasion");
+			TFoe.RegGadget(sk3Evasion, "Stat3", "Evasion");
+			TFoe.RegGadget(LnkEvasion, "Link", "Evasion");
+			TFoe.RegGadget(sk1HP, "Stat1", "HP");
+			TFoe.RegGadget(sk2HP, "Stat2", "HP");
+			TFoe.RegGadget(sk3HP, "Stat3", "HP");
+			TFoe.RegGadget(LnkHP, "Link", "HP");
 
-            TFoe.AIActTarLnk[AI_ACT_Target1] = 1;
+			TFoe.RegGadget(ResistEarth, "Resist_Element", "Earth");
+			TFoe.RegGadget(FatalEarth, "Fatal", "Earth");
+			TFoe.RegGadget(ResistWood, "Resist_Element", "Wood");
+			TFoe.RegGadget(FatalWood, "Fatal", "Wood");
+			TFoe.RegGadget(ResistWater, "Resist_Element", "Water");
+			TFoe.RegGadget(FatalWater, "Fatal", "Water");
+			TFoe.RegGadget(ResistFrost, "Resist_Element", "Frost");
+			TFoe.RegGadget(FatalFrost, "Fatal", "Frost");
+			TFoe.RegGadget(ResistWind, "Resist_Element", "Wind");
+			TFoe.RegGadget(FatalWind, "Fatal", "Wind");
+			TFoe.RegGadget(ResistLightning, "Resist_Element", "Lightning");
+			TFoe.RegGadget(FatalLightning, "Fatal", "Lightning");
+			TFoe.RegGadget(ResistFire, "Resist_Element", "Fire");
+			TFoe.RegGadget(FatalFire, "Fatal", "Fire");
+			TFoe.RegGadget(ResistLava, "Resist_Element", "Lava");
+			TFoe.RegGadget(FatalLava, "Fatal", "Lava");
+			TFoe.RegGadget(ResistLight, "Resist_Element", "Light");
+			TFoe.RegGadget(FatalLight, "Fatal", "Light");
+			TFoe.RegGadget(ResistDarkness, "Resist_Element", "Darkness");
+			TFoe.RegGadget(FatalDarkness, "Fatal", "Darkness");
+
+			TFoe.RegGadget(Experience, "Kill", "Experience");
+			TFoe.RegGadget(Cash, "Kill", "Cash");
+
+			TFoe.RegGadget(ItemDrop1, "Drop1", "Item");
+			TFoe.RegGadget(ItemDrop2, "Drop2", "Item");
+			TFoe.RegGadget(ItemSteal, "Steal", "Item");
+			TFoe.RegGadget(ItemDrop1Rate, "Drop1", "Rate");
+			TFoe.RegGadget(ItemDrop2Rate, "Drop2", "Rate");
+			TFoe.RegGadget(ItemStealRate, "Steal", "Rate");
+
+			TFoe.RegGadget(ExtractFire, "Extract", "Fire");
+			TFoe.RegGadget(ExtractLava, "Extract", "Lava");
+			TFoe.RegGadget(ExtractEarth, "Extract", "Earth");
+			TFoe.RegGadget(ExtractWood, "Extract", "Wood");
+			TFoe.RegGadget(ExtractWater, "Extract", "Water");
+			TFoe.RegGadget(ExtractFrost, "Extract", "Frost");
+			TFoe.RegGadget(ExtractWind, "Extract", "Wind");
+			TFoe.RegGadget(ExtractLightning, "Extract", "Lightning");
+			TFoe.RegGadget(ExtractLight, "Extract", "Light");
+			TFoe.RegGadget(ExtractDarkness, "Extract", "Darkness");
+
+			TFoe.RegGadget(ResistPoison, "Resist_Status", "Poison");
+			TFoe.RegGadget(ResistDisease, "Resist_Status", "Disease");
+			TFoe.RegGadget(ResistParalysis,"Resist_Status", "Paralysis");
+			TFoe.RegGadget(ResistSleep, "Resist_Status", "Sleep");
+			TFoe.RegGadget(ResistCurse, "Resist_Status", "Curse");
+			TFoe.RegGadget(ResistExhausted, "Resist_Status", "Exhaustion");
+			TFoe.RegGadget(ResistZombie, "Resist_Status", "Zombie");
+			TFoe.RegGadget(ResistDeath, "Resist_Status", "Death");
+
+			TFoe.RegGadget(StartStatusPoison, "Start_Status", "Poison");
+			TFoe.RegGadget(StartStatusDisease, "Start_Status", "Disease");
+			TFoe.RegGadget(StartStatusParalysis, "Start_Status", "Paralysis");
+			TFoe.RegGadget(StartStatusExhausted, "Start_Exhausted", "Exhaustion");
+			TFoe.RegGadget(StartStatusZombie, "Start_Zombie", "Zombie");
+			TFoe.RegGadget(StartStatusSleep, "Start_Status", "Sleep");
+			TFoe.RegGadget(StartStatusCurse, "Start_Status", "Curse");
+			TFoe.RegGadget(StartStatusUndead, "Start_Status", "Undaed");
+			
+
+
+			TFoe.AIActTarLnk[AI_ACT_Target1] = 1;
 			TFoe.AIActTarLnk[AI_ACT_Target2] = 2;
 			TFoe.AIActTarLnk[AI_ACT_Target3] = 3;
 			TFoe.AIActRateLnk[AI_ACT_Rate1] = 1;
@@ -209,6 +271,16 @@ namespace Foe {
 			}
 			LinkStatOperation = false;
 
+		}
+
+		private void BaseComboChange(object sender, SelectionChangedEventArgs e) {
+			if (!TFoe.MayEdit) return;
+			var MCV = (ComboBox)sender;
+			var GID = TFoe.BXLink[MCV];
+			if (MCV.SelectedItem == null)
+				TFoe.Current.Data[GID.Cat, GID.Val] = "";
+			else
+				TFoe.Current.Data[GID.Cat, GID.Val] = MCV.SelectedItem.ToString();
 		}
 	}
 }
