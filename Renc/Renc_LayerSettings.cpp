@@ -1,6 +1,6 @@
 // Lic:
 // Luna's Father
-// Renc - Config (header)
+// Renc - Layer Settings
 // 
 // 
 // 
@@ -23,14 +23,24 @@
 // 
 // Version: 23.10.20
 // EndLic
-#pragma once
-#include <string>
 
+#include <june19.hpp>
+
+using namespace Slyvina;
+using namespace June19;
 
 namespace LunaRenc {
-	void AssignConfigFile(std::string _file);
-	std::string DefaultFontFile();
-	std::string DirKthura();
-	std::string MapStuffDir();
-	std::string FoesDir();
+	static j19gadget
+		* LayerSelector{nullptr};
+
+	void LayerSelectorDraw(j19gadget* g, j19action) {
+		static double hue{ 0 }; hue = hue + .1; if (hue > 360) hue = 0;
+		g->SetForegroundHSV(hue, 1, 1);
+		g->SetBackgroundHSV(hue, 1, .2);
+	}
+
+	void LayerInit(j19gadget* g) {
+		LayerSelector = CreateListBox(0, 0, 250, g->H(), g);
+		LayerSelector->CBDraw = LayerSelectorDraw;
+	}
 }

@@ -237,7 +237,9 @@
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Units\Source\SlyvTime.cpp" />
     <ClCompile Include="Renc.cpp" />
     <ClCompile Include="Renc_Config.cpp" />
+    <ClCompile Include="Renc_LayerSettings.cpp" />
     <ClCompile Include="Renc_MapData.cpp" />
+    <ClCompile Include="Renc_RandomEncounters.cpp" />
     <ClCompile Include="Renc_UserInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -247,7 +249,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Renc_Config.hpp" />
+    <ClInclude Include="Renc_LayerSettings.hpp" />
     <ClInclude Include="Renc_MapData.hpp" />
+    <ClInclude Include="Renc_RandomEncounters.hpp" />
     <ClInclude Include="Renc_UserInterface.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

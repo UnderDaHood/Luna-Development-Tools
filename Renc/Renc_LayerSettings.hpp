@@ -1,6 +1,6 @@
 // Lic:
 // Luna's Father
-// Renc - Config (header)
+// Renc - Layer Settings (header)
 // 
 // 
 // 
@@ -24,13 +24,10 @@
 // Version: 23.10.20
 // EndLic
 #pragma once
-#include <string>
+
+#include <june19_core.hpp>
 
 
 namespace LunaRenc {
-	void AssignConfigFile(std::string _file);
-	std::string DefaultFontFile();
-	std::string DirKthura();
-	std::string MapStuffDir();
-	std::string FoesDir();
+	void LayerInit(Slyvina::June19::j19gadget*);
 }

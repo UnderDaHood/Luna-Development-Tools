@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.10.19
+// Version: 23.10.20
 // EndLic
 #include <JCR6_Core.hpp>
 #include <JCR6_zlib.hpp>
@@ -50,6 +50,12 @@ namespace LunaRenc {
 		return Ask(_Config, "Fonts", "Default", "Please help me locate DOSFont.jfbf: ");
 	}
 	std::string DirKthura() {
-		return Ask(_Config, "Directories", "Kthura", "Directory where Kthura maps are located: ");
+		return Ask(_Config, "Directories", "Kthura", "\7Directory where Kthura maps are located: ");
+	}
+	std::string MapStuffDir() {
+		return Ask(_Config, "Directories", "MapStuff", "\7Directory for 'MapStuff': ");
+	}
+	std::string FoesDir() {
+		return Ask(_Config, "Directories", "Foes", "\7Directory for 'Foes': ");
 	}
 }

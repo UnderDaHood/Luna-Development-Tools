@@ -176,6 +176,12 @@
     <ClCompile Include="Renc_MapData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Renc_RandomEncounters.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Renc_LayerSettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Renc_Config.hpp">
@@ -185,6 +191,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Renc_UserInterface.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Renc_RandomEncounters.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Renc_LayerSettings.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.10.19
+// Version: 23.10.20
 // EndLic
 
 #include <TQSG.hpp>
@@ -32,6 +32,8 @@
 #include "Renc_UserInterface.hpp"
 #include "Renc_Config.hpp"
 #include "Renc_MapData.hpp"
+#include "Renc_RandomEncounters.hpp"
+#include "Renc_LayerSettings.hpp"
 
 using namespace Slyvina;
 using namespace Units;
@@ -47,7 +49,8 @@ namespace LunaRenc {
 			* ListKthura{ nullptr },
 			* WorkPanel{ nullptr },
 			* RencPanel{ nullptr },
-			* BossPanel{ nullptr };
+			* BossPanel{ nullptr },
+			* LayerPanel{ nullptr };
 
 		static std::map<std::string, j19gadget*> TypePanels;
 
@@ -78,6 +81,9 @@ namespace LunaRenc {
 			WorkPanel->SetBackground(18, 25, 0, 255);
 			RencPanel = MakeType("Random Encounters", 0, 0, 0, 127, true);
 			BossPanel = MakeType("Boss Fights", 255, 25, 0, 0);
+			LayerPanel = MakeType("Field settings", 512, 18, 25, 0);
+			Init_Renc(RencPanel);
+			LayerInit(LayerPanel);
 			ScanForMaps(ListKthura);
 			
 		}
