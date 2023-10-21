@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.10.20
+// Version: 23.10.21
 // EndLic
 #pragma once
 
@@ -30,4 +30,5 @@
 
 namespace LunaRenc {
 	void LayerInit(Slyvina::June19::j19gadget*);
+	//void LayerMapSelected(std::string s);
 }

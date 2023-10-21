@@ -21,8 +21,10 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.10.20
+// Version: 23.10.21
 // EndLic
+
+#include <SlyvQCol.hpp>
 
 #include <TQSG.hpp>
 #include <TQSE.hpp>
@@ -84,8 +86,7 @@ namespace LunaRenc {
 			LayerPanel = MakeType("Field settings", 512, 18, 25, 0);
 			Init_Renc(RencPanel);
 			LayerInit(LayerPanel);
-			ScanForMaps(ListKthura);
-			
+			ScanForMaps(ListKthura);			
 		}
 
 		void Run() {
@@ -100,6 +101,7 @@ namespace LunaRenc {
 
 		void Done() {
 			FreeJune19();
+			QCol->Reset();
 		}
 	}
 }

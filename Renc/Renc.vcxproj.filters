@@ -31,6 +31,9 @@
     <Filter Include="Source Files\Slyvina\June19">
       <UniqueIdentifier>{30e0220b-885f-4234-b2b5-11ffbeedf031}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Slyvina\Kthura">
+      <UniqueIdentifier>{28c3e1f8-ca2a-45ff-b651-27f3d1bac98d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\..\..\..\..\Slyvina\Libs\TQSL\SDL2\zlib1.dll">
@@ -181,6 +184,9 @@
     </ClCompile>
     <ClCompile Include="Renc_LayerSettings.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Kthura\Source\Kthura_Core.cpp">
+      <Filter>Source Files\Slyvina\Kthura</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
