@@ -1,6 +1,6 @@
 // Lic:
 // Dev/Luna Development Tools/MapAction/MapAction.cpp
-// Version: 23.10.15
+// Version: 23.11.01
 // Copyright (C) 2023 Jeroen Petrus Broks
 // 
 // ===========================
@@ -278,6 +278,17 @@ void ScanMap(std::string mapfile) {
 				}
 				if (Upper(o->texture()) == "GFX/TEXTURES/TREASURE/CHEST.JPBF" && o->animframe() == 0) {
 					Clickables += "\t__click[\"" + o->Tag() + "\"] = Scyndi.Globals.Open_Chest\n";				
+				}
+				if (Lower(o->texture()) == "gfx/mapspots/travel.png") {
+					static auto n{ 0 };
+					if (!Prefixed(o->Tag(), "TRAVELERSEMBLEM_")) {
+						std::string t;
+						do { t = "TRAVELERSEMBLEM_" + ToRoman(++n); } while (lay->HasTag(t));
+						QCol->Doing("Tagging Traveler's Emblem", t);
+						o->Tag(t);
+						Kthura_Save(kthmap, kthuradir + "/" + mapfile);
+					}
+					Clickables += "\t__click[\"" + o->Tag() + "\"] = Scyndi.Globals.GetTravelersEmblem\n";					
 				}
 			}
 		}

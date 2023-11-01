@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.10.19
+// Version: 23.10.24
 // EndLic
 using System;
 using System.Collections.Generic;
@@ -95,6 +95,7 @@ namespace Foe {
 			TFoe.RegGadget(sk2HP, "Stat2", "HP");
 			TFoe.RegGadget(sk3HP, "Stat3", "HP");
 			TFoe.RegGadget(LnkHP, "Link", "HP");
+			TFoe.RegGadget(Joker, "Script", "Joker");
 
 			TFoe.RegGadget(ResistEarth, "Resist_Element", "Earth");
 			TFoe.RegGadget(FatalEarth, "Fatal", "Earth");

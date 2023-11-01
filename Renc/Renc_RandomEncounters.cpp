@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.10.21
+// Version: 23.10.24
 // EndLic
 #include <june19.hpp>
 
@@ -79,9 +79,9 @@ namespace LunaRenc {
 	static void QTBAct(j19gadget* g, j19action) {
 		for (auto q : QuickTextBoxes) {
 			if (q.cat == "*FOE")
-				MData->Value(FoeYes->ItemText(), q.key, g->Text);
+				MData->Value(FoeYes->ItemText(), q.key, q.box->Text);
 			else
-				MData->Value(q.cat, q.key, g->Text);
+				MData->Value(q.cat, q.key, q.box->Text);
 		}
 	}
 

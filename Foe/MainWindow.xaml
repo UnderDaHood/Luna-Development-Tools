@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 Please note that some references to data like pictures or audio, do not automatically
 fall under this licenses. Mostly this is noted in the respective files.
 
-Version: 23.10.19
+Version: 23.10.24
 End License block -->
 <Window x:Class="Foe.MainWindow"
 		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -109,6 +109,8 @@ End License block -->
 									<ComboBoxItem>Strongest</ComboBoxItem>
 								</ComboBox>
 							</Grid>
+							<Label Margin="0,240,0,0" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" FontSize="15" Content="Joker Script" />
+							<TextBox x:Name="Joker" Margin="150,240,0,0" Height="30" Foreground="#ffff00" Background="#0f0f00" HorizontalAlignment="Left" Width="500" VerticalAlignment="Top" />
 							<Image VerticalAlignment="Bottom" HorizontalAlignment="Right" Stretch="None" Source="/Aziella.png"/>
 						</Grid>
 					</TabItem>
@@ -247,43 +249,43 @@ End License block -->
 						</Grid>
 					</TabItem>
 					<TabItem Header="Status Restistance">
-                        <Grid>
+						<Grid>
 
-                            <Label Content="Poison" Foreground="#00b4ff" Height="30" Margin="0,0,0,0" VerticalAlignment="Top" />
-                            <TextBox x:Name="ResistPoison" Margin="150,0,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
-                            <CheckBox x:Name="StartStatusPoison" Margin="210,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
+							<Label Content="Poison" Foreground="#00b4ff" Height="30" Margin="0,0,0,0" VerticalAlignment="Top" />
+							<TextBox x:Name="ResistPoison" Margin="150,0,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
+							<CheckBox x:Name="StartStatusPoison" Margin="210,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
 
-                            <Label Content="Disease"  Margin="0,30,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
-                            <TextBox x:Name="ResistDisease" Margin="150,30,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
-                            <CheckBox x:Name="StartStatusDisease"  Margin="210,30,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
+							<Label Content="Disease"  Margin="0,30,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
+							<TextBox x:Name="ResistDisease" Margin="150,30,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
+							<CheckBox x:Name="StartStatusDisease"  Margin="210,30,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
 
-                            <Label Content="Paralysis"  Margin="0,60,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
-                            <TextBox x:Name="ResistParalysis" Margin="150,60,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
-                            <CheckBox x:Name="StartStatusParalysis"  Margin="210,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
+							<Label Content="Paralysis"  Margin="0,60,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
+							<TextBox x:Name="ResistParalysis" Margin="150,60,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
+							<CheckBox x:Name="StartStatusParalysis"  Margin="210,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
 
-                            <Label Content="Curse"  Margin="0,90,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
-                            <TextBox x:Name="ResistCurse" Margin="150,90,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
-                            <CheckBox x:Name="StartStatusCurse"  Margin="210,90,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
+							<Label Content="Curse"  Margin="0,90,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
+							<TextBox x:Name="ResistCurse" Margin="150,90,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
+							<CheckBox x:Name="StartStatusCurse"  Margin="210,90,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
 
-                            <Label Content="Sleep"  Margin="0,120,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
-                            <TextBox x:Name="ResistSleep" Margin="150,120,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
-                            <CheckBox x:Name="StartStatusSleep"  Margin="210,120,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
+							<Label Content="Sleep"  Margin="0,120,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
+							<TextBox x:Name="ResistSleep" Margin="150,120,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
+							<CheckBox x:Name="StartStatusSleep"  Margin="210,120,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
 
-                            <Label Content="Exhausted"  Margin="0,150,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
-                            <TextBox x:Name="ResistExhausted" Margin="150,150,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
-                            <CheckBox x:Name="StartStatusExhausted"  Margin="210,150,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
+							<Label Content="Exhausted"  Margin="0,150,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
+							<TextBox x:Name="ResistExhausted" Margin="150,150,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
+							<CheckBox x:Name="StartStatusExhausted"  Margin="210,150,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
 
-                            <Label Content="Death"  Margin="0,180,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
-                            <TextBox x:Name="ResistDeath" Margin="150,180,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
+							<Label Content="Death"  Margin="0,180,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
+							<TextBox x:Name="ResistDeath" Margin="150,180,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
 
-                            <Label Content="Zombie"  Margin="0,210,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
-                            <TextBox x:Name="ResistZombie" Margin="150,210,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
-                            <CheckBox x:Name="StartStatusZombie"  Margin="210,210,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
+							<Label Content="Zombie"  Margin="0,210,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
+							<TextBox x:Name="ResistZombie" Margin="150,210,0,0" Foreground="#ffff00" Background="#7f0000" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" TextChanged="TextBaseEdit" />
+							<CheckBox x:Name="StartStatusZombie"  Margin="210,210,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
 
-                            <Label Content="Undead"  Margin="0,240,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
-                            <CheckBox x:Name="StartStatusUndead"  Margin="210,240,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
-                        </Grid>
-                    </TabItem>
+							<Label Content="Undead"  Margin="0,240,0,0" Foreground="#00b4ff" Height="30" VerticalAlignment="Top" />
+							<CheckBox x:Name="StartStatusUndead"  Margin="210,240,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" Content="False" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
+						</Grid>
+					</TabItem>
 
 					<TabItem Header="Drops">
 						<Grid>
@@ -301,31 +303,31 @@ End License block -->
 							<ComboBox x:Name="ItemSteal" Margin="150,120,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="200" SelectionChanged="BaseComboChange" />
 							<TextBox x:Name="ItemStealRate"  Margin="400,120,0,0" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" Background="Black" TextChanged="TextBaseEdit" />
 							<Grid x:Name="ExtractLeft" Width="400" HorizontalAlignment="Left" Margin="0,180,0,0">
-                                <Label Content="Extract Wood" Margin="0,0,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
-                                <TextBox x:Name="ExtractWood" Margin="150,0,0,0" Foreground="#00ff00" Background="#000f00" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
-                                <Label Content="Extract Lightning" Margin="0,30,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
-                                <TextBox x:Name="ExtractLightning" Margin="150,30,0,0" Foreground="#00ffff" Background="#000f0f" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
-                                <Label Content="Extract Frost" Margin="0,60,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
-                                <TextBox x:Name="ExtractFrost" Margin="150,60,0,0" Foreground="#70ffff" Background="#070f0f" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
-                                <Label Content="Extract Lava" Margin="0,90,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
-                                <TextBox x:Name="ExtractLava" Margin="150,90,0,0" Foreground="#ff7000" Background="#0f0700" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
-                                <Label Content="Extract Light" Margin="0,120,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
-                                <TextBox x:Name="ExtractLight" Margin="150,120,0,0" Foreground="#ffffff" Background="#0f0f0f" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
-                            </Grid>
-                            <Image VerticalAlignment="Bottom" HorizontalAlignment="Right" Stretch="None" Source="/Rachel.png"/>
+								<Label Content="Extract Wood" Margin="0,0,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
+								<TextBox x:Name="ExtractWood" Margin="150,0,0,0" Foreground="#00ff00" Background="#000f00" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
+								<Label Content="Extract Lightning" Margin="0,30,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
+								<TextBox x:Name="ExtractLightning" Margin="150,30,0,0" Foreground="#00ffff" Background="#000f0f" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
+								<Label Content="Extract Frost" Margin="0,60,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
+								<TextBox x:Name="ExtractFrost" Margin="150,60,0,0" Foreground="#70ffff" Background="#070f0f" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
+								<Label Content="Extract Lava" Margin="0,90,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
+								<TextBox x:Name="ExtractLava" Margin="150,90,0,0" Foreground="#ff7000" Background="#0f0700" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
+								<Label Content="Extract Light" Margin="0,120,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
+								<TextBox x:Name="ExtractLight" Margin="150,120,0,0" Foreground="#ffffff" Background="#0f0f0f" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
+							</Grid>
+							<Image VerticalAlignment="Bottom" HorizontalAlignment="Right" Stretch="None" Source="/Rachel.png"/>
 							<Grid x:Name="ExtractRight" Width="400" HorizontalAlignment="Right" Margin="0,180,0,0">
-                                <Label Content="Extract Earth" Margin="0,0,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
-                                <TextBox x:Name="ExtractEarth" Margin="150,0,0,0" Foreground="#ffff00" Background="#0f0f00" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
-                                <Label Content="Extract Fire" Margin="0,30,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
-                                <TextBox x:Name="ExtractFire" Margin="150,30,0,0" Foreground="#ff0000" Background="#0f0000" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
-                                <Label Content="Extract Wind" Margin="0,60,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
-                                <TextBox x:Name="ExtractWind" Margin="150,60,0,0" Foreground="#707070" Background="#070707" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
-                                <Label Content="Extract Water" Margin="0,90,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
-                                <TextBox x:Name="ExtractWater" Margin="150,90,0,0" Foreground="#0507ff" Background="#00000f" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
-                                <Label Content="Extract Darkness" Margin="0,120,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
-                                <TextBox x:Name="ExtractDarkness" Margin="150,120,0,0" Foreground="#b400ff" Background="#0b000f" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
-                            </Grid>
-                        </Grid>
+								<Label Content="Extract Earth" Margin="0,0,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
+								<TextBox x:Name="ExtractEarth" Margin="150,0,0,0" Foreground="#ffff00" Background="#0f0f00" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
+								<Label Content="Extract Fire" Margin="0,30,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
+								<TextBox x:Name="ExtractFire" Margin="150,30,0,0" Foreground="#ff0000" Background="#0f0000" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
+								<Label Content="Extract Wind" Margin="0,60,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
+								<TextBox x:Name="ExtractWind" Margin="150,60,0,0" Foreground="#707070" Background="#070707" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
+								<Label Content="Extract Water" Margin="0,90,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
+								<TextBox x:Name="ExtractWater" Margin="150,90,0,0" Foreground="#0507ff" Background="#00000f" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
+								<Label Content="Extract Darkness" Margin="0,120,0,0" Height="30" Foreground="#00b4ff" VerticalAlignment="Top" />
+								<TextBox x:Name="ExtractDarkness" Margin="150,120,0,0" Foreground="#b400ff" Background="#0b000f" Height="30" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"  TextChanged="TextBaseEdit" />
+							</Grid>
+						</Grid>
 					</TabItem>
 
 				</TabControl>
