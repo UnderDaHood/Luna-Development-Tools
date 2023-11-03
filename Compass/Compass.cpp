@@ -1,6 +1,6 @@
 // Lic:
 // Dev/Luna Development Tools/Compass/Compass.cpp
-// Version: 23.10.16
+// Version: 23.11.02
 // Copyright (C) 2023 Jeroen Petrus Broks
 // 
 // ===========================
@@ -79,7 +79,7 @@ void AddTag(GINIE d, KthuraObject* o, string laytag, string name) {
 		break;
 	default:
 		d->Value(ctag, "X", o->x());
-		d->Value(ctag, "Y", o->x());
+		d->Value(ctag, "Y", o->y());
 	}
 }
 
