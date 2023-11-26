@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{456fbcfb-9e45-4c79-a219-b2cee703e03f}</ProjectGuid>
-    <RootNamespace>Renc</RootNamespace>
+    <ProjectGuid>{efb7b496-5391-4ec2-9ee2-90df30f36cee}</ProjectGuid>
+    <RootNamespace>KthuraSplit</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -72,8 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)..\Tools</OutDir>
-    <IncludePath>E:\Projects\Applications\Slyvina\Libs\June19\head;E:\Projects\Applications\Slyvina\Libs\TQSL\SDL2\include;E:\Projects\Applications\Slyvina\Libs\TQSL\Headers;E:\Projects\Applications\Slyvina\Libs\JCR6\Headers;E:\Projects\Applications\Slyvina\Libs\Units\Headers;E:\Projects\Applications\Slyvina\Libs\Kthura\Headers;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\Projects\Applications\Slyvina\Libs\JCR6\3rdParty\zlib;E:\Projects\Applications\Slyvina\Libs\TQSL\SDL2;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\Projects\Applications\Slyvina\Libs\Lunatic;E:\Projects\Applications\Slyvina\Libs\JCR6\Headers;E:\Projects\Applications\Slyvina\Libs\Units\Headers;E:\Projects\Applications\Slyvina\Libs\Kthura\Headers;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\Projects\Applications\Slyvina\Libs\JCR6\3rdParty\zlib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -129,103 +129,50 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2_Image.lib;SDL2_mixer.lib;SDL2main.lib;zlib.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>zlib.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="..\..\..\..\..\Slyvina\Libs\TQSL\SDL2\zlib1.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="..\..\..\..\..\Slyvina\Libs\TQSL\SDL2\SDL2_mixer.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="..\..\..\..\..\Slyvina\Libs\TQSL\SDL2\SDL2_image.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="..\..\..\..\..\Slyvina\Libs\TQSL\SDL2\SDL2.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="..\..\..\..\..\Slyvina\Libs\TQSL\SDL2\libwebp-7.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="..\..\..\..\..\Slyvina\Libs\TQSL\SDL2\libvorbisfile-3.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="..\..\..\..\..\Slyvina\Libs\TQSL\SDL2\libvorbis-0.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="..\..\..\..\..\Slyvina\Libs\TQSL\SDL2\libtiff-5.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="..\..\..\..\..\Slyvina\Libs\TQSL\SDL2\libpng16-16.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="..\..\..\..\..\Slyvina\Libs\TQSL\SDL2\libopusfile-0.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="..\..\..\..\..\Slyvina\Libs\TQSL\SDL2\libopus-0.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="..\..\..\..\..\Slyvina\Libs\TQSL\SDL2\libogg-0.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="..\..\..\..\..\Slyvina\Libs\TQSL\SDL2\libmpg123-0.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="..\..\..\..\..\Slyvina\Libs\TQSL\SDL2\libmodplug-1.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="..\..\..\..\..\Slyvina\Libs\TQSL\SDL2\libjpeg-9.dll">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
-  </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\JCR6\Source\JCR6_Core.cpp" />
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\JCR6\Source\JCR6_JQL.cpp" />
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\JCR6\Source\JCR6_RealDir.cpp" />
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\JCR6\Source\JCR6_Write.cpp" />
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\JCR6\Source\JCR6_zlib.cpp" />
-    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\June19\src\june19_button.cpp" />
-    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\June19\src\june19_checkbox.cpp" />
-    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\June19\src\june19_core.cpp" />
-    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\June19\src\june19_label.cpp" />
-    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\June19\src\june19_listbox.cpp" />
-    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\June19\src\june19_picture.cpp" />
-    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\June19\src\june19_radio.cpp" />
-    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\June19\src\june19_scrollbar.cpp" />
-    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\June19\src\june19_tabber.cpp" />
-    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\June19\src\june19_textfield.cpp" />
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Kthura\Source\Kthura_Core.cpp" />
-    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\TQSL\Source\TQSE.cpp" />
-    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\TQSL\Source\TQSG.cpp" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Kthura\Source\Kthura_Save.cpp" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lapi.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lauxlib.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lbaselib.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lcode.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lcorolib.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lctype.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\ldblib.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\ldebug.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\ldo.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\ldump.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lfunc.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lgc.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\linit.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\liolib.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\llex.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lmathlib.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lmem.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\loadlib.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lobject.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lopcodes.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\loslib.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lparser.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lstate.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lstring.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lstrlib.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\ltable.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\ltablib.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\ltm.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lundump.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lutf8lib.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lvm.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lzio.c" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lunatic.cpp" />
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Units\Source\SlyvAsk.cpp" />
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Units\Source\SlyvBank.cpp" />
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Units\Source\SlyvDir.cpp" />
@@ -236,13 +183,7 @@
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Units\Source\SlyvStream.cpp" />
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Units\Source\SlyvString.cpp" />
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Units\Source\SlyvTime.cpp" />
-    <ClCompile Include="Renc.cpp" />
-    <ClCompile Include="Renc_Boss.cpp" />
-    <ClCompile Include="Renc_Config.cpp" />
-    <ClCompile Include="Renc_LayerSettings.cpp" />
-    <ClCompile Include="Renc_MapData.cpp" />
-    <ClCompile Include="Renc_RandomEncounters.cpp" />
-    <ClCompile Include="Renc_UserInterface.cpp" />
+    <ClCompile Include="Kthura_Split.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\..\..\..\..\Slyvina\Libs\JCR6\3rdParty\zlib\zlib.dll">
@@ -250,13 +191,39 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Units\Headers\Slyvina.hpp" />
-    <ClInclude Include="Renc_Boss.hpp" />
-    <ClInclude Include="Renc_Config.hpp" />
-    <ClInclude Include="Renc_LayerSettings.hpp" />
-    <ClInclude Include="Renc_MapData.hpp" />
-    <ClInclude Include="Renc_RandomEncounters.hpp" />
-    <ClInclude Include="Renc_UserInterface.hpp" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lapi.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lauxlib.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lcode.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lctype.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\ldebug.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\ldo.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lfunc.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lgc.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\ljumptab.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\llex.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\llimits.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lmem.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lobject.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lopcodes.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lopnames.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lparser.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lprefix.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lstate.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lstring.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\ltable.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\ltm.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lua.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lua.hpp" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\luaconf.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lualib.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lundump.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lvm.h" />
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lzio.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\doc\contents.html" />
+    <None Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\doc\manual.html" />
+    <None Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\doc\readme.html" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

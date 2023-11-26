@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QuickStats", "QuickStats\Qu
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Renc", "Renc\Renc.vcxproj", "{456FBCFB-9E45-4C79-A219-B2CEE703E03F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kthura_Split", "Kthura_Split\Kthura_Split.vcxproj", "{EFB7B496-5391-4EC2-9EE2-90DF30F36CEE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,18 @@ Global
 		{456FBCFB-9E45-4C79-A219-B2CEE703E03F}.Release|x64.Build.0 = Release|x64
 		{456FBCFB-9E45-4C79-A219-B2CEE703E03F}.Release|x86.ActiveCfg = Release|Win32
 		{456FBCFB-9E45-4C79-A219-B2CEE703E03F}.Release|x86.Build.0 = Release|Win32
+		{EFB7B496-5391-4EC2-9EE2-90DF30F36CEE}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{EFB7B496-5391-4EC2-9EE2-90DF30F36CEE}.Debug|Any CPU.Build.0 = Debug|x64
+		{EFB7B496-5391-4EC2-9EE2-90DF30F36CEE}.Debug|x64.ActiveCfg = Debug|x64
+		{EFB7B496-5391-4EC2-9EE2-90DF30F36CEE}.Debug|x64.Build.0 = Debug|x64
+		{EFB7B496-5391-4EC2-9EE2-90DF30F36CEE}.Debug|x86.ActiveCfg = Debug|Win32
+		{EFB7B496-5391-4EC2-9EE2-90DF30F36CEE}.Debug|x86.Build.0 = Debug|Win32
+		{EFB7B496-5391-4EC2-9EE2-90DF30F36CEE}.Release|Any CPU.ActiveCfg = Release|x64
+		{EFB7B496-5391-4EC2-9EE2-90DF30F36CEE}.Release|Any CPU.Build.0 = Release|x64
+		{EFB7B496-5391-4EC2-9EE2-90DF30F36CEE}.Release|x64.ActiveCfg = Release|x64
+		{EFB7B496-5391-4EC2-9EE2-90DF30F36CEE}.Release|x64.Build.0 = Release|x64
+		{EFB7B496-5391-4EC2-9EE2-90DF30F36CEE}.Release|x86.ActiveCfg = Release|Win32
+		{EFB7B496-5391-4EC2-9EE2-90DF30F36CEE}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

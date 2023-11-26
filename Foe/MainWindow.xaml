@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 Please note that some references to data like pictures or audio, do not automatically
 fall under this licenses. Mostly this is noted in the respective files.
 
-Version: 23.10.24
+Version: 23.11.24
 End License block -->
 <Window x:Class="Foe.MainWindow"
 		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -74,6 +74,11 @@ End License block -->
 							<TextBox x:Name="ColorB" Height="30" Width="50" Margin="250,260,0,0" VerticalAlignment="Top" Foreground="#00b4ff" Background="#00000f" TextChanged="TextBaseEdit" HorizontalAlignment="Left" />
 							<Label Content="Boss" Height="30" Margin="0,290,0,0" FontSize="15" Foreground="#00bfff" VerticalAlignment="Top"/>
 							<CheckBox x:Name="FoeIsBoss" Content="False" Margin="150,290,0,0" Height="30" VerticalAlignment="Top" Foreground="#bbff88" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
+                            <Label Content="Scale" Margin="0,320,0,0" Height="30" VerticalAlignment="Top" Foreground="#00b4ff" FontSize="15" />
+                            <TextBox x:Name="Scale" Height="30" Width="50" Margin="150,320,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#ffff00" Background="#0f0f00" TextChanged="TextBaseEdit" />
+                            <Label Content="DrawType" Height="30" Margin="0,350,0,0" FontSize="15" Foreground="#00bfff" VerticalAlignment="Top"/>
+                            <TextBox x:Name="DrawType" Height="30" Width="50" Margin="150,350,0,0" VerticalAlignment="Top" Foreground="#ffff00" Background="#00000f" TextChanged="TextBaseEdit_DrawType" HorizontalAlignment="Left" />
+                            <Label x:Name="DrawType_Show" Content="None" Height="30" Margin="200,350,0,0" FontSize="15" Foreground="#00bfff" VerticalAlignment="Top"/>
 							<Image VerticalAlignment="Bottom" HorizontalAlignment="Right" Source="/Myrah.png" Stretch="None"/>
 						</Grid>
 					</TabItem>
@@ -117,8 +122,8 @@ End License block -->
 					<TabItem Header="Statistics">
 						<Grid>
 							<Label Content="View Savegame" Height="30" FontSize="15" Foreground="#00bfff" VerticalAlignment="Top"/>
-							<ComboBox x:Name="SaveGane" Height="30" VerticalAlignment="Top" Margin="150,0,0,0"/>
-							<TextBox x:Name="SaveGameResults" Height="100" Foreground="#00ff00" Background="#000b00" FontFamily="Courier" Margin="0,30,0,0" VerticalAlignment="Top" />
+							<ComboBox x:Name="SaveGame" Height="30" VerticalAlignment="Top" Margin="150,0,0,0" SelectionChanged="ViewSaveGame"/>
+							<TextBox x:Name="SaveGameResults" Height="100" Foreground="#00ff00" Background="#000b00" FontFamily="Courier New" Margin="0,30,0,0" VerticalAlignment="Top" FontSize="14" />
 							<!-- const Var BaseStats = NewArray("Strength","Defense","Intelligence","Resistance","Agility","Accuracy","Evasion") -->
 							<Label Content="Easy" HorizontalAlignment="Left" Height="30" Margin="150,130,0,0" Foreground="#b4ff00" VerticalAlignment="Top"/>
 							<Label Content="Regular" HorizontalAlignment="Left" Height="30" Margin="200,130,0,0" Foreground="#ffb400" VerticalAlignment="Top"/>

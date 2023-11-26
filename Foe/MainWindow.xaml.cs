@@ -21,13 +21,14 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.10.24
+// Version: 23.11.24
 // EndLic
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -62,6 +63,8 @@ namespace Foe {
 			TFoe.RegGadget(ColorB, "Color", "Blue");
 			TFoe.RegGadget(FoeIsBoss, "METADATA", "BOSS");
 			TFoe.RegGadget(AI_Script, "FOE_AI", "Script");
+			TFoe.RegGadget(DrawType, "MetaData", "DrawType");
+			TFoe.RegGadget(Scale, "MetaData", "Scale");
 
 			TFoe.RegGadget(sk1Strength, "Stat1", "Strength");
 			TFoe.RegGadget(sk2Strength, "Stat2", "Strength");
@@ -166,6 +169,15 @@ namespace Foe {
 			TFoe.AIActRateLnk[AI_ACT_Rate2] = 2;
 			TFoe.AIActRateLnk[AI_ACT_Rate3] = 3;
 			EditTabber.IsEnabled = false;
+
+			RefreshSaveGames();
+		}
+
+		void RefreshSaveGames() {
+			var path = DirectoryConfig.Get("SaveGameDir");
+			var sgfiles = FileList.GetTree(path);
+			SaveGame.Items.Clear();
+			foreach (var sgfile in sgfiles) { SaveGame.Items.Add(sgfile); }
 		}
 
 		private void Action_NewFoe_Click(object sender, RoutedEventArgs e) {
@@ -283,5 +295,49 @@ namespace Foe {
 			else
 				TFoe.Current.Data[GID.Cat, GID.Val] = MCV.SelectedItem.ToString();
 		}
+
+		private void ViewSaveGame(object sender, SelectionChangedEventArgs e) {
+			var VSG = (ComboBox)sender; if (VSG.SelectedItem == null) return;
+			var parameters = $"{DirectoryConfig.Get("SaveGameDir")}/{VSG.SelectedItem}";
+			var cmd = DirectoryConfig.GetFile("SaveGameCharViewer");			
+			var output = new StringBuilder($"$ {cmd} \"{parameters}\"\n\n");
+			//QuickStream.PushDir();
+			//Debug.WriteLine($"Going to dir: {Prj.OutputGit}");
+			//Directory.SetCurrentDirectory(Prj.OutputGit);
+			var pgit = new Process();
+			pgit.StartInfo.FileName = cmd;
+			pgit.StartInfo.Arguments = $"\"{parameters}\"";
+			pgit.StartInfo.CreateNoWindow = true;
+			pgit.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+			pgit.StartInfo.RedirectStandardOutput = true;
+			pgit.StartInfo.UseShellExecute = false;
+			pgit.Start();
+			while (!pgit.StandardOutput.EndOfStream) {
+				var p = pgit.StandardOutput.ReadLine();
+				output.Append($"{p}\n");
+				Debug.WriteLine($"CALL>{p}");
+			}
+			pgit.WaitForExit();
+			output.Append($"\n\n\nDone! Exit code {pgit.ExitCode}");
+			SaveGameResults.Text = output.ToString();
+			//if (pgit.ExitCode != 0) {
+			//	Fout.Error($"Call returned exit code {pgit.ExitCode}");
+			//	return false;
+			//}
+			//return true;
+		}
+
+		private void TextBaseEdit_DrawType(object sender, TextChangedEventArgs e) {
+			var i = qstr.ToInt(((TextBox)sender).Text);
+			switch (i) {
+				case 0: DrawType_Show.Content = "None"; break;
+				case 1: DrawType_Show.Content = "Negative"; break;
+				case 2: DrawType_Show.Content = "Flip"; break;
+				case 3: DrawType_Show.Content = "Animation"; break;
+				default:DrawType_Show.Content = "?? UNKNOWN ??"; break;
+			}
+			TextBaseEdit(sender, e);
+		}
 	}
+	
 }

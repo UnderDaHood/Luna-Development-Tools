@@ -1,6 +1,6 @@
 // Lic:
 // Dev/Luna Development Tools/Compass/Compass.cpp
-// Version: 23.11.02
+// Version: 23.11.24
 // Copyright (C) 2023 Jeroen Petrus Broks
 // 
 // ===========================
@@ -57,7 +57,7 @@ GINIE Data{ nullptr };
 
 bool AllowedTag(string Tag) {
 	Trans2Upper(Tag);
-	vector<string> Forbidden{ "ZONE", "CHEST", "RNDITEM", "RANDOM_TREASURE","SAVE" };
+	vector<string> Forbidden{ "ZONE", "CHEST", "RNDITEM", "RANDOM_TREASURE", "SAVE", "PASS", "TRAVELERSEMBLEM", "MANAMENT_CRYSTAL_", "BLACKORB_" };
 	for (auto chk : Forbidden) if (Prefixed(Tag, chk)) return false;
 	return true;
 }
@@ -88,7 +88,7 @@ void ScanMap(string mapfile) {
 	Data->NewValue("GlobalTags", "Next", "Yes");
 	Data->NewValue("GlobalTagName", "Next", "Forward");
 	Data->NewValue("GlobalTags", "Prev", "Yes");
-	Data->NewValue("GlobalTagName", "Prev", "Backward");
+	Data->NewValue("GlobalTagName", "Prev", "Backward");	
 	QCol->Doing("Processing", mapfile);
 	auto kMap{ LoadKthura(kthuradir+"/"+mapfile)};
 	auto lays{ *kMap->Layers() };
@@ -112,8 +112,10 @@ void ScanMap(string mapfile) {
 				}
 				if (Yes(Data, "GlobalTags", Tag, "Is tag \"" + Tag + "\" a global tag")) {
 					AddTag(outdata, o, laytag, Ask(Data, "GlobalTagName", Tag, "Description of global tag \"" + Tag + "\":"));
-				} else if (Yes(Data,LocalTag, "Use", "Use \"" + Tag + "\" as a local tag then")) {
-					AddTag(outdata,o,laytag,Ask(Data,LocalTag,"Name","Name for local tag \""+Tag+"\":"));
+				} else if (!Yes(Data,"GlobalIgnore",Tag,"IGNORE \""+Tag+"\" globally then")) {
+					if (Yes(Data, LocalTag, "Use", "Use \"" + Tag + "\" as a local tag then")) {
+						AddTag(outdata, o, laytag, Ask(Data, LocalTag, "Name", "Name for local tag \"" + Tag + "\":"));
+					}
 				}
 			}
 		}

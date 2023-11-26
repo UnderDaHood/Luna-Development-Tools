@@ -34,6 +34,9 @@
     <Filter Include="Source Files\Slyvina\Kthura">
       <UniqueIdentifier>{28c3e1f8-ca2a-45ff-b651-27f3d1bac98d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Slyvina">
+      <UniqueIdentifier>{0e73b794-8859-4de9-98c1-e67071a05279}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\..\..\..\..\Slyvina\Libs\TQSL\SDL2\zlib1.dll">
@@ -188,6 +191,9 @@
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Kthura\Source\Kthura_Core.cpp">
       <Filter>Source Files\Slyvina\Kthura</Filter>
     </ClCompile>
+    <ClCompile Include="Renc_Boss.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Renc_Config.hpp">
@@ -204,6 +210,12 @@
     </ClInclude>
     <ClInclude Include="Renc_LayerSettings.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Renc_Boss.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Slyvina\Libs\Units\Headers\Slyvina.hpp">
+      <Filter>Header Files\Slyvina</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

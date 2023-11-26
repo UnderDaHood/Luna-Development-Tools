@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.10.21
+// Version: 23.11.11
 // EndLic
 
 #include <SlyvQCol.hpp>
@@ -36,6 +36,9 @@
 #include "Renc_MapData.hpp"
 #include "Renc_RandomEncounters.hpp"
 #include "Renc_LayerSettings.hpp"
+#include "Renc_Boss.hpp"
+
+
 
 using namespace Slyvina;
 using namespace Units;
@@ -87,6 +90,7 @@ namespace LunaRenc {
 			Init_Renc(RencPanel);
 			LayerInit(LayerPanel);
 			ScanForMaps(ListKthura);			
+			BossInit(BossPanel);
 		}
 
 		void Run() {

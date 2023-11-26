@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.10.19
+// Version: 23.11.11
 // EndLic
 using System;
 using System.Collections.Generic;
@@ -31,6 +31,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Markup;
 //using System.Windows.Forms;
 //using System.Windows.Forms.Design;
 using TrickyUnits;
@@ -61,6 +62,16 @@ namespace Foe {
 			}
 			return Dirry.AD(Directories["Dirs", path]);
 		}
+
+		static public string GetFile(string file) {
+			if (Directories["Files",file]=="") {
+                Confirm.Error($"No file set for '{file}'. Please select it");
+				var f = FFS.RequestFile().Replace("\\","/");
+                if (f == "") Environment.Exit(255);
+               Directories["Files", file] = f;
+            }
+            return Dirry.AD(Directories["Files", file]);
+        }
 
 		static public string Foes => Get("Foes");
 

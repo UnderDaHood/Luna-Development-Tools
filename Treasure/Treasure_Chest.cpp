@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.10.16
+// Version: 23.11.18
 // EndLic
 
 #include <SlyvQCol.hpp>
@@ -231,14 +231,17 @@ namespace Luna_Treasure {
 						QCol->Doing("Retagging object #", o->ID(), "\t"); QCol->Pink(o->Tag()); QCol->Yellow(" => "); QCol->LGreen(chesttag + "\n\7");
 						o->Tag(chesttag);
 						modified = true;
-					}
-					ChestSelector->AddItem(chesttag);
+					}					
 					CCD->Add("Lists", lay, chesttag, true, true);
 					auto CCDOT{ "CHEST::" + chesttag };
 					if (o->r() != 255) CCD->NewValue(CCDOT, "NewGame+Only", "TRUE");
 					CCD->NewValue(CCDOT, "Type", "Cash");
 					CCD->NewValue(CCDOT, "Cash", "10");
 				}
+			}
+			{ // Sort
+				auto l = CCD->List("Lists", lay);
+				for (auto chesttag : *l) ChestSelector->AddItem(chesttag);
 			}
 		}
 		if (modified) {

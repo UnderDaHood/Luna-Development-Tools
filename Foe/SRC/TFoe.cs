@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.10.19
+// Version: 23.11.24
 // EndLic
 using System;
 using System.Collections.Generic;
@@ -65,6 +65,7 @@ namespace Foe {
 			Data.NewValue("ALG_META", "003_Copyright", $"(c) {DateTime.Now.Year} Jeroen P. Broks");
 			Data.NewValue("MetaData", "Name", qstr.StripDir(n));
 			Data.NewValue("MetaData", "Image", $"GFX/Combat/Foe/{n}.png");
+			Data.NewValue("MetaData", "Scale", "1000");
 			Data.NewValue("Color", "Red", "255");
 			Data.NewValue("Color", "Green", "255");
 			Data.NewValue("Color", "Blue", "255");
