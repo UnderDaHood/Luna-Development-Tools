@@ -1,6 +1,6 @@
 // Lic:
 // Dev/Luna Development Tools/Compass/Compass.cpp
-// Version: 23.11.24
+// Version: 23.12.06
 // Copyright (C) 2023 Jeroen Petrus Broks
 // 
 // ===========================
@@ -57,7 +57,7 @@ GINIE Data{ nullptr };
 
 bool AllowedTag(string Tag) {
 	Trans2Upper(Tag);
-	vector<string> Forbidden{ "ZONE", "CHEST", "RNDITEM", "RANDOM_TREASURE", "SAVE", "PASS", "TRAVELERSEMBLEM", "MANAMENT_CRYSTAL_", "BLACKORB_" };
+	vector<string> Forbidden{ "ZONE", "CHEST", "RNDITEM", "RANDOM_TREASURE", "SAVE", "PASS", "TRAVELERSEMBLEM", "MANAMENT_CRYSTAL_", "BLACKORB_","TOME_","BREAK_","CRACK_","CRTEX_" };
 	for (auto chk : Forbidden) if (Prefixed(Tag, chk)) return false;
 	return true;
 }

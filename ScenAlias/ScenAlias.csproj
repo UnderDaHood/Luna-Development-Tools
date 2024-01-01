@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\..\..\..\VisualStudio\TrickyUnits\mkl.cs" Link="Import\mkl.cs" />
+    <Compile Include="..\..\..\..\..\VisualStudio\TrickyUnits\qstr.cs" Link="Import\qstr.cs" />
+    <Compile Include="..\..\..\..\..\VisualStudio\TrickyUnits\qstream.cs" Link="Import\qstream.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Import\" />
+  </ItemGroup>
+
+</Project>

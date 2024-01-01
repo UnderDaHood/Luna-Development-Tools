@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.10.14
+// Version: 23.12.15
 // EndLic
 
 #include <SDL.h>
@@ -31,15 +31,18 @@
 #include <JCR6_Core.hpp>
 #include <JCR6_zlib.hpp>
 #include <JCR6_JQL.hpp>
+#include <JCR6_RealDir.hpp>
 
 #include "Treasure_Config.hpp"
 #include "Treasure_UI.hpp"
+
 
 using namespace Luna_Treasure;
 using namespace Slyvina::Units;
 using namespace Slyvina::JCR6;
 
 int main(int ac, char** c) {
+	JCR6_InitRealDir();
 	std::cout << "Treasure for \"Luna's Father\"\nCoded by: Jeroen P. Broks\n\n\n";
 	RegConfigFile(StripExt(c[0]) + ".ini");
 	init_zlib();

@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.11.18
+// Version: 23.12.22
 // EndLic
 
 #include <SlyvQCol.hpp>
@@ -68,7 +68,8 @@ namespace Luna_Treasure {
 		* ItemGroup{ nullptr }, // I need a separate group for the radio buttons
 		* ItemAll{ nullptr },
 		* ItemIngredient{ nullptr },
-		* ItemRegular{ nullptr };
+		* ItemRegular{ nullptr },
+		* ItemSkill{ nullptr };
 	static VecString
 		ItemList{nullptr};
 
@@ -156,7 +157,8 @@ namespace Luna_Treasure {
 		for (auto& itm : *ItemList) {
 			if (
 				Prefixed(itm, "INGREDIENT_") ||
-				Prefixed(itm, "ITM_")
+				Prefixed(itm, "ITM_") ||
+				Prefixed(itm, "SKILL_")
 				)
 				ItemSelector->AddItem(itm);
 		}
@@ -179,6 +181,16 @@ namespace Luna_Treasure {
 				ItemSelector->AddItem(itm);
 		}
 	}
+
+	static void ItemSkillAct(j19gadget*, j19action) {
+		ItemSelector->ClearItems();
+		GetItemList();
+		for (auto& itm : *ItemList) {
+			if (Prefixed(itm, "SKILL_"))
+				ItemSelector->AddItem(itm);
+		}
+	}
+
 
 	static void ItemSelectAct(j19gadget*, j19action) {
 		if (ItemSelector->SelectedItem() < 0) return;
@@ -225,10 +237,16 @@ namespace Luna_Treasure {
 			QCol->Doing("Scanning layer", lay);
 			CCD->List("Lists",lay)->clear();
 			for (auto o = layer->FirstObject(); o; o = o->Next()) {
+				if (Upper(o->texture()) == ChestTex && o->Kind() == KthuraKind::Obstacle && (o->animframe() || o->animspeed()>=0)) {
+					QCol->Error(TrSPrintF("\7Animation data for chests (#%d) not the way it should be! Correcting",o->ID()));
+					o->animspeed(-1);
+					o->animframe(0);
+					modified = true;
+				}
 				if (Upper(o->texture()) == ChestTex && o->animframe() == 0) {
 					auto chesttag = "CHEST_" + lay + TrSPrintF("__%04d_%04d", o->x(), o->y());
 					if (chesttag != o->Tag()) {
-						QCol->Doing("Retagging object #", o->ID(), "\t"); QCol->Pink(o->Tag()); QCol->Yellow(" => "); QCol->LGreen(chesttag + "\n\7");
+						QCol->Doing("Retagging object #", (int)o->ID(), "\t"); QCol->Pink(o->Tag()); QCol->Yellow(" => "); QCol->LGreen(chesttag + "\n\7");
 						o->Tag(chesttag);
 						modified = true;
 					}					
@@ -316,6 +334,10 @@ namespace Luna_Treasure {
 		ItemRegular->SetFont(FontForKthuraList());
 		ItemRegular->CBAction = ItemRegAct;
 
+		ItemRegular = CreateRadioButton("Skill", 4, 60, 100, 20, ItemGroup, false);
+		ItemRegular->SetForeground(0, 0, 0, 255);
+		ItemRegular->SetFont(FontForKthuraList());
+		ItemRegular->CBAction = ItemSkillAct;
 
 		// Must be last!
 		ErrorMap = CreateLabel("Error in Kthura Map or none loaded!", 0, 0, Panel->W(), Panel->H(), MainPanel, 2);

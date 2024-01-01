@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.10.16
+// Version: 23.12.15
 // EndLic
 
 #include "Treasure_Config.hpp"
@@ -63,7 +63,7 @@ namespace Luna_Treasure {
 		if (!__ret) {
 			auto ffile{ Ask(_Config, "Fonts", "Default", "\7Font for [DEFAULT]:") };
 			QCol->Doing("Loading", "Default Font >> "+ffile);
-			if (!FileExists(ffile)) {
+			if (!(FileExists(ffile) || DirectoryExists(ffile))) {
 				QCol->Error("Font file does not exist: " + ffile);
 				return nullptr;
 			}
