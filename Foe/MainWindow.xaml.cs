@@ -4,7 +4,7 @@
 // 
 // 
 // 
-// (c) Jeroen P. Broks, 2023
+// (c) Jeroen P. Broks, 2023, 2024
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.11.30
+// Version: 24.01.02
 // EndLic
 using System;
 using System.Collections.Generic;
@@ -65,6 +65,8 @@ namespace Foe {
 			TFoe.RegGadget(AI_Script, "FOE_AI", "Script");
 			TFoe.RegGadget(DrawType, "MetaData", "DrawType");
 			TFoe.RegGadget(Scale, "MetaData", "Scale");
+			TFoe.RegGadget(AltX, "AltCoords", "X");
+			TFoe.RegGadget(AltY, "AltCoords", "Y");
 
 			TFoe.RegGadget(sk1Strength, "Stat1", "Strength");
 			TFoe.RegGadget(sk2Strength, "Stat2", "Strength");
