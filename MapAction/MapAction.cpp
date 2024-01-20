@@ -1,7 +1,7 @@
 // Lic:
 // Dev/Luna Development Tools/MapAction/MapAction.cpp
-// Version: 23.12.30
-// Copyright (C) 2023 Jeroen Petrus Broks
+// Version: 24.01.17
+// Copyright (C) 2023, 2024 Jeroen Petrus Broks
 // 
 // ===========================
 // This file is part of a project related to the Phantasar Chronicles or another
@@ -311,7 +311,7 @@ void ScanMap(std::string mapfile,bool forced=false) {
 					QCol->Doing(o->Tag(), o->ID());
 					ZoneAction += " \t_enter[\"" + o->Tag() + "\"] = Scyndi.Globals." + o->Tag() + "\n";
 				}
-				if (Prefixed(o->Tag(), "ZA_") || Prefixed(o->Tag(), "ZAE_") || Prefixed(o->Tag(), "ZALE_") || Prefixed(o->Tag(), "ZAEL_") || Upper(o->Tag()) == "BYE") {
+				if (Prefixed(Upper(o->Tag()), "ZA_") || Prefixed(Upper(o->Tag()), "ZAE_") || Prefixed(Upper(o->Tag()), "ZALE_") || Prefixed(Upper(o->Tag()), "ZAEL_") || Upper(Upper(o->Tag())) == "BYE") {
 					QCol->Doing("=> Enter", o->Tag());
 					//ZoneAction += "\t_enter[#_enter+1] = \"" + o->Tag() += "\"\n"; 
 					ZoneAction += " \t_enter[\"" + o->Tag() + "\"] = \"" + o->Tag() + "\"\n";
