@@ -4,7 +4,7 @@ Foe Editor - Main Window (xaml)
 
 
 
-(c) Jeroen P. Broks, 2023
+(c) Jeroen P. Broks, 2023, 2024
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 Please note that some references to data like pictures or audio, do not automatically
 fall under this licenses. Mostly this is noted in the respective files.
 
-Version: 23.11.24
+Version: 24.01.02
 End License block -->
 <Window x:Class="Foe.MainWindow"
 		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -74,13 +74,16 @@ End License block -->
 							<TextBox x:Name="ColorB" Height="30" Width="50" Margin="250,260,0,0" VerticalAlignment="Top" Foreground="#00b4ff" Background="#00000f" TextChanged="TextBaseEdit" HorizontalAlignment="Left" />
 							<Label Content="Boss" Height="30" Margin="0,290,0,0" FontSize="15" Foreground="#00bfff" VerticalAlignment="Top"/>
 							<CheckBox x:Name="FoeIsBoss" Content="False" Margin="150,290,0,0" Height="30" VerticalAlignment="Top" Foreground="#bbff88" Checked="CheckBaseEdit" Unchecked="CheckBaseEdit" />
-                            <Label Content="Scale" Margin="0,320,0,0" Height="30" VerticalAlignment="Top" Foreground="#00b4ff" FontSize="15" />
-                            <TextBox x:Name="Scale" Height="30" Width="50" Margin="150,320,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#ffff00" Background="#0f0f00" TextChanged="TextBaseEdit" />
-                            <Label Content="DrawType" Height="30" Margin="0,350,0,0" FontSize="15" Foreground="#00bfff" VerticalAlignment="Top"/>
-                            <TextBox x:Name="DrawType" Height="30" Width="50" Margin="150,350,0,0" VerticalAlignment="Top" Foreground="#ffff00" Background="#00000f" TextChanged="TextBaseEdit_DrawType" HorizontalAlignment="Left" />
-                            <Label x:Name="DrawType_Show" Content="None" Height="30" Margin="200,350,0,0" FontSize="15" Foreground="#00bfff" VerticalAlignment="Top"/>
-							<Image VerticalAlignment="Bottom" HorizontalAlignment="Right" Source="/Myrah.png" Stretch="None"/>
-						</Grid>
+							<Label Content="Scale" Margin="0,320,0,0" Height="30" VerticalAlignment="Top" Foreground="#00b4ff" FontSize="15" />
+							<TextBox x:Name="Scale" Height="30" Width="50" Margin="150,320,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#ffff00" Background="#0f0f00" TextChanged="TextBaseEdit" />
+							<Label Content="DrawType" Height="30" Margin="0,350,0,0" FontSize="15" Foreground="#00bfff" VerticalAlignment="Top"/>
+							<TextBox x:Name="DrawType" Height="30" Width="50" Margin="150,350,0,0" VerticalAlignment="Top" Foreground="#ffff00" Background="#00000f" TextChanged="TextBaseEdit_DrawType" HorizontalAlignment="Left" />
+							<Label x:Name="DrawType_Show" Content="None" Height="30" Margin="200,350,0,0" FontSize="15" Foreground="#00bfff" VerticalAlignment="Top"/>
+                            <Label Content="AltCoordinates" Height="30" Margin="0,380,0,0" FontSize="15" Foreground="#00bfff" VerticalAlignment="Top"/>
+                            <TextBox x:Name="AltX" Height="30" Width="50" Margin="150,380,0,0" VerticalAlignment="Top" Foreground="#ff0000" Background="#0f0000" TextChanged="TextBaseEdit" HorizontalAlignment="Left" />
+                            <TextBox x:Name="AltY" Height="30" Width="50" Margin="200,380,0,0" VerticalAlignment="Top" Foreground="#00ff00" Background="#000f00" TextChanged="TextBaseEdit" HorizontalAlignment="Left" />
+                            <Image VerticalAlignment="Bottom" HorizontalAlignment="Right" Source="/Myrah.png" Stretch="None"/>
+                        </Grid>
 					</TabItem>
 					<TabItem Header="AI Settings">
 						<Grid>
