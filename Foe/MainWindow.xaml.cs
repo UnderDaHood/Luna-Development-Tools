@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 24.01.02
+// Version: 24.04.19
 // EndLic
 using System;
 using System.Collections.Generic;
@@ -161,6 +161,8 @@ namespace Foe {
 			TFoe.RegGadget(StartStatusSleep, "Start_Status", "Sleep");
 			TFoe.RegGadget(StartStatusCurse, "Start_Status", "Curse");
 			TFoe.RegGadget(StartStatusUndead, "Start_Status", "Undead");
+
+			TFoe.RegGadget(Joker, "Joker", "Joker");
 			
 			TFoe.AIActTarLnk[AI_ACT_Target1] = 1;
 			TFoe.AIActTarLnk[AI_ACT_Target2] = 2;

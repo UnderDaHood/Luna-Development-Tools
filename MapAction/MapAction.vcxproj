@@ -138,6 +138,7 @@
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\JCR6\Source\JCR6_RealDir.cpp" />
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\JCR6\Source\JCR6_Write.cpp" />
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\JCR6\Source\JCR6_zlib.cpp" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Kthura\Source\Kthura_Compiler.cpp" />
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Kthura\Source\Kthura_Core.cpp" />
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Kthura\Source\Kthura_Save.cpp" />
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Lunatic\Lua\Raw\src\lapi.c" />

@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 Please note that some references to data like pictures or audio, do not automatically
 fall under this licenses. Mostly this is noted in the respective files.
 
-Version: 24.01.02
+Version: 24.04.21
 End License block -->
 <Window x:Class="Foe.MainWindow"
 		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -79,11 +79,11 @@ End License block -->
 							<Label Content="DrawType" Height="30" Margin="0,350,0,0" FontSize="15" Foreground="#00bfff" VerticalAlignment="Top"/>
 							<TextBox x:Name="DrawType" Height="30" Width="50" Margin="150,350,0,0" VerticalAlignment="Top" Foreground="#ffff00" Background="#00000f" TextChanged="TextBaseEdit_DrawType" HorizontalAlignment="Left" />
 							<Label x:Name="DrawType_Show" Content="None" Height="30" Margin="200,350,0,0" FontSize="15" Foreground="#00bfff" VerticalAlignment="Top"/>
-                            <Label Content="AltCoordinates" Height="30" Margin="0,380,0,0" FontSize="15" Foreground="#00bfff" VerticalAlignment="Top"/>
-                            <TextBox x:Name="AltX" Height="30" Width="50" Margin="150,380,0,0" VerticalAlignment="Top" Foreground="#ff0000" Background="#0f0000" TextChanged="TextBaseEdit" HorizontalAlignment="Left" />
-                            <TextBox x:Name="AltY" Height="30" Width="50" Margin="200,380,0,0" VerticalAlignment="Top" Foreground="#00ff00" Background="#000f00" TextChanged="TextBaseEdit" HorizontalAlignment="Left" />
-                            <Image VerticalAlignment="Bottom" HorizontalAlignment="Right" Source="/Myrah.png" Stretch="None"/>
-                        </Grid>
+							<Label Content="AltCoordinates" Height="30" Margin="0,380,0,0" FontSize="15" Foreground="#00bfff" VerticalAlignment="Top"/>
+							<TextBox x:Name="AltX" Height="30" Width="50" Margin="150,380,0,0" VerticalAlignment="Top" Foreground="#ff0000" Background="#0f0000" TextChanged="TextBaseEdit" HorizontalAlignment="Left" />
+							<TextBox x:Name="AltY" Height="30" Width="50" Margin="200,380,0,0" VerticalAlignment="Top" Foreground="#00ff00" Background="#000f00" TextChanged="TextBaseEdit" HorizontalAlignment="Left" />
+							<Image VerticalAlignment="Bottom" HorizontalAlignment="Right" Source="/Myrah.png" Stretch="None"/>
+						</Grid>
 					</TabItem>
 					<TabItem Header="AI Settings">
 						<Grid>
@@ -118,7 +118,7 @@ End License block -->
 								</ComboBox>
 							</Grid>
 							<Label Margin="0,240,0,0" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="#00b4ff" FontSize="15" Content="Joker Script" />
-							<TextBox x:Name="Joker" Margin="150,240,0,0" Height="30" Foreground="#ffff00" Background="#0f0f00" HorizontalAlignment="Left" Width="500" VerticalAlignment="Top" />
+							<TextBox x:Name="Joker" Margin="150,240,0,0" Height="30" Foreground="#ffff00" Background="#0f0f00" HorizontalAlignment="Left" Width="500" VerticalAlignment="Top" TextChanged="TextBaseEdit" />
 							<Image VerticalAlignment="Bottom" HorizontalAlignment="Right" Stretch="None" Source="/Aziella.png"/>
 						</Grid>
 					</TabItem>

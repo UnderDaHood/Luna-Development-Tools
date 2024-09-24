@@ -224,6 +224,7 @@
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\June19\src\june19_tabber.cpp" />
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\June19\src\june19_textfield.cpp" />
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Kthura\Source\Kthura_Core.cpp" />
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Kthura\Source\Kthura_LoadCompiled.cpp" />
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\TQSL\Source\TQSE.cpp" />
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\TQSL\Source\TQSG.cpp" />
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Units\Source\SlyvAsk.cpp" />

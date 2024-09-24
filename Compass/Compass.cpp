@@ -1,6 +1,6 @@
 // Lic:
 // Dev/Luna Development Tools/Compass/Compass.cpp
-// Version: 24.01.17
+// Version: 24.09.24
 // Copyright (C) 2023, 2024 Jeroen Petrus Broks
 // 
 // ===========================
@@ -45,6 +45,7 @@
 #include <JCR6_zlib.hpp>
 
 #include <Kthura_Core.hpp>
+#include <Kthura_LoadCompiled.hpp>
 
 using namespace std;
 using namespace Slyvina;
@@ -59,7 +60,7 @@ bool Forced{ false };
 
 bool AllowedTag(string Tag) {
 	Trans2Upper(Tag);
-	vector<string> Forbidden{ "ZONE", "CHEST", "RNDITEM", "RANDOM_TREASURE", "SAVE", "PASS", "TRAVELERSEMBLEM", "MANAMENT_CRYSTAL_", "BLACKORB_","TOME_","BREAK_","CRACK_","CRTEX_","SCYNDIPOLE" };
+	vector<string> Forbidden{ "ZONE", "CHEST", "RNDITEM", "RANDOM_TREASURE", "SAVE", "PASS", "TRAVELERSEMBLEM", "MANAMENT_CRYSTAL_", "BLACKORB_","TOME_","BREAK_","CRACK_","CRTEX_","SCYNDIPOLE","COG:" };
 	for (auto chk : Forbidden) if (Prefixed(Tag, chk)) return false;
 	return true;
 }
@@ -94,7 +95,7 @@ void ScanMap(string mapfile) {
 		Data->NewValue("GlobalTags", "Prev", "Yes");
 		Data->NewValue("GlobalTagName", "Prev", "Backward");
 		QCol->Doing("Processing", mapfile);
-		auto kMap{ LoadKthura(kthuradir + "/" + mapfile) };
+		auto kMap{ XLoadKthura(kthuradir + "/" + mapfile) };
 		auto lays{ *kMap->Layers() };
 		for (auto laytag : lays) {
 			auto lay = (*kMap)[laytag];
@@ -143,6 +144,7 @@ void ScanMap(string mapfile) {
 int main(int ca,char** args) {
 	init_zlib();
 	JCR6_InitRealDir();
+	RegCompiledXLoader();
 	QCol->LGreen("Compass for Luna's Father!\n");
 	QCol->Doing("Coded by", "Jeroen P. Broks");
 	myexe = args[0]; myexedir = ExtractDir(args[0]); ChangeDir(myexedir);

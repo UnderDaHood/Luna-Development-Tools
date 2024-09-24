@@ -4,7 +4,7 @@
 // 
 // 
 // 
-// (c) Jeroen P. Broks, 2023
+// (c) Jeroen P. Broks, 2023, 2024
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -21,13 +21,15 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.11.11
+// Version: 24.07.20
 // EndLic
 
 #include <SlyvQCol.hpp>
 
 #include <TQSG.hpp>
 #include <TQSE.hpp>
+
+#include <JCR6_zlib.hpp>
 
 #include <june19.hpp>
 
@@ -64,6 +66,7 @@ namespace LunaRenc {
 		static void ShowType(j19gadget* g, j19action) { TypePanels[g->Caption]->Visible = g->checked; }
 
 		static j19gadget* MakeType(std::string Capt, int x, byte r, byte g, byte b,bool checked=false) {
+			JCR6::init_zlib();
 			auto radio = CreateRadioButton(Capt, x, 2, 100, 20, WorkPanel, checked);
 			radio->SetForeground(180, 255, 0, 255);
 			radio->CBDraw = ShowType;

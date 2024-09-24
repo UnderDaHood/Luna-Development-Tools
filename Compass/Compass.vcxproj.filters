@@ -78,6 +78,9 @@
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\JCR6\Source\JCR6_zlib.cpp">
       <Filter>Source Files\Slyvina\JCR6</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Kthura\Source\Kthura_LoadCompiled.cpp">
+      <Filter>Source Files\Slyvina\Kthura</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\..\..\..\..\Slyvina\Libs\JCR6\3rdParty\zlib\zlib.dll">

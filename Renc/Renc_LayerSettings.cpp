@@ -4,7 +4,7 @@
 // 
 // 
 // 
-// (c) Jeroen P. Broks, 2023
+// (c) Jeroen P. Broks, 2023, 2024
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.10.21
+// Version: 24.07.18
 // EndLic
 
 #include <SlyvQCol.hpp>
@@ -30,6 +30,7 @@
 #include <june19.hpp>
 
 #include <Kthura_Core.hpp>
+#include <Kthura_LoadCompiled.hpp>
 
 #include <TQSG.hpp>
 #include <TQSE.hpp>
@@ -66,7 +67,7 @@ namespace LunaRenc {
 		if (force || (!Layers.count(umap))) {
 			Cls(); Poll(); Flip();
 			QCol->Doing("Loading", umap);
-			auto _map{ LoadKthura(DirKthura() + "/" + umap) };
+			auto _map{ XLoadKthura(DirKthura() + "/" + umap) };
 			auto _layers{ _map->Layers() };
 			Layers[umap].clear();
 			for (auto _lay : *_layers) Layers[umap].push_back(_lay);
@@ -146,6 +147,9 @@ namespace LunaRenc {
 	}
 
 	void LayerInit(j19gadget* g) {
+		QCol->Doing("Registering","Compiled Loader");
+		RegCompiledXLoader();
+		QCol->Doing("Setting up", "Layer based GUI page");
 		g->CBDraw = GenUpdate;
 		LayerSelector = CreateListBox(0, 0, 250, g->H(), g);
 		LayerSelector->CBDraw = LayerSelectorDraw;

@@ -1,6 +1,6 @@
 // Lic:
 // Dev/Luna Development Tools/MapAction/MapAction.cpp
-// Version: 24.01.17
+// Version: 24.08.09
 // Copyright (C) 2023, 2024 Jeroen Petrus Broks
 // 
 // ===========================
@@ -47,9 +47,11 @@
 
 #include <Kthura_Core.hpp>
 #include <Kthura_Save.hpp>
+#include <Kthura_Compiler.hpp>
 #include <Lunatic.hpp>
 
 #include <JCR6_RealDir.hpp>
+#include <JCR6_zlib.hpp>
 
 using namespace Slyvina;
 using namespace Units;
@@ -59,13 +61,17 @@ using namespace Lunatic;
 #define tome_realsize 337.0
 #define tome_mapsize 64.0
 
-std::string kthuradir{};
-std::string configfile{};
-std::string changelogfile{};
+std::string 
+kthuradir{},
+kthuracompiled{},
+configfile{},
+changelogfile{};
+
 GINIE config{ nullptr };
 GINIE changelog{ nullptr };
 VecString Maps{ nullptr };
 uint32 CountBlackOrbs{ 0 };
+uint32 CountSeals{ 0 };
 GINIE SkyTower{ nullptr };
 
 // The compiler doesn't need this, but the Visual Studio IDE kept complaining about this, and this Macro shuts it up.
@@ -180,10 +186,12 @@ void LoadConfig() {
 	config = LoadGINIE(configfile, configfile, "(c) Jeroen P. Broks");
 	AskGINIE = config;
 	changelog = LoadOptGINIE(changelogfile, changelogfile, "(c) Jeroen P. Broks");
+	Slyvina::Kthura::CompileStorage = Ask("Compile", "Storage", "Compilation Storage: ", "zlib");
 }
 
 void ScanForMaps() {
-	kthuradir = Ask("Directories", "Input", "Where to find the original Kthura maps: ");
+	kthuradir = Ask("Directories", "Raw", "Where to find the raw Kthura maps: ");
+	kthuracompiled = Ask("Directories", "Compiled", "Where to find the compiled Kthura Maps:");
 	QCol->Doing("Scanning for maps", kthuradir);
 	Maps = FileList(kthuradir);
 	QCol->Doing("=> Found", Maps->size(),"\n\n");
@@ -196,6 +204,13 @@ void ScanMap(std::string mapfile,bool forced=false) {
 		bool uptodate{ FileSize(fmapfile) == changelog->IntValue(mapfile,"Size") };
 		uptodate = uptodate && FileDate(fmapfile) == changelog->Value(mapfile, "Date"); 
 		uptodate = uptodate && (int)FileTimeStamp(fmapfile) == changelog->IntValue(mapfile, "TimeStamp");
+		uptodate = uptodate && FileExists(kthuracompiled + "/" + mapfile);
+		/*
+		std::cout << "Up to date:" << uptodate << "\n";
+		std::cout << "Date:" << boolstring(FileDate(fmapfile) == changelog->Value(mapfile, "Date")) << "\t" << FileDate(fmapfile) << "\t" << changelog->Value(mapfile, "Date") << "\n";
+		std::cout << "Time:" << boolstring((int)FileTimeStamp(fmapfile) == changelog->IntValue(mapfile, "TimeStamp")) << "\t" << FileTimeStamp(fmapfile) << "\t" << changelog->IntValue(mapfile, "TimeStamp")<<"\n";
+		std::cout << "Trgt:" << boolstring(FileExists(kthuracompiled + "/" + mapfile)) << "\t" << kthuracompiled + "/" + mapfile);
+		//*/
 		if (uptodate) {
 			QCol->Doing("Skipping", mapfile,"\t");
 			QCol->Green("Up to date\n");
@@ -221,6 +236,8 @@ void ScanMap(std::string mapfile,bool forced=false) {
 	std::string Secret{"-- SECRET: " + mapfile + "\n\nlocal _SECRET = {}\n"};
 	std::string Crack{"-- CRACK: " + mapfile + "\n\nlocal _CRACK = {}\n"};
 	std::string Poles{"-- POLES: " + mapfile + "\n\nlocal _POLES = {}\n"};
+	std::string Cogs{"-- COGS: " + mapfile + "\n\nlocal _COGS = {}\n"};
+	bool HasCogs{ false };
 	auto layers{ kthmap->Layers() };
 	if (!layers->size())QCol->Error("\7No layers!");
 	for (auto layname : *layers) {
@@ -249,6 +266,9 @@ void ScanMap(std::string mapfile,bool forced=false) {
 		Crack += "\do\n\tlocal __crack = { _cracks_ = {} }; _CRACK[\"" + layname + "\"] =  __crack; \n";
 		Poles += "\n\n\n-- Layer: " + layname + "-- \n";
 		Poles += "do\n\t local __poles = { }; _POLES[\"" + layname + "\"] = __poles\n";
+		Cogs += "\n\n\n-- Layer: " + layname + "-- \n";
+		Cogs += "do\n\t local __cogs = { }; _COGS[\"" + layname + "\"] = __cogs\n";
+
 		for (auto o = lay->FirstObject(); o; o = o->Next()) {
 			QCol->Doing("=> Object", o->ID(), "\r");
 			if (o->texture() == "") {
@@ -303,13 +323,22 @@ void ScanMap(std::string mapfile,bool forced=false) {
 					Pass += TrSPrintF("\t\tfor y = %d,%d,1 do\n\t\t\t__pass[x][y] = true\n", sy, ey);
 					Pass += "\t\tend\n\t\end\n";
 				}
+				if (Prefixed(Upper(o->Tag()), "GO_") && (o->Kind()==KthuraKind::TiledArea || o->Kind() == KthuraKind::Zone || o->Kind() == KthuraKind::StretchedArea || o->Kind() == KthuraKind::Rect)) {
+					QCol->Warn("Invalid GO tag!");
+					ReadLine("\7Hit enter to continue!");
+					QCol->Doing("Fixing", o->ID());
+					o->Tag("GO:" + ChReplace(o->Tag(),'_',':'));
+					QCol->Doing("Saving", kthuradir + "/" + mapfile);
+					Kthura_Save(kthmap, kthuradir + "/" + mapfile);
+				}
 				if (Prefixed(Upper(o->Tag()), "GO:")) {
 					QCol->Doing("=> Go", o->Tag());
 					ZoneAction += " \t_enter[\"" + o->Tag() + "\"] = Scyndi.Globals.MapGoTo\n";
 				}
-				if (Upper(o->Tag()) == "KOKONORA" || Upper(o->Tag()) == "NEONOR" || Upper(o->Tag()) == "TINKERISLAND" || Upper(o->Tag()) == "DELISTO") {
+				if (Upper(o->Tag()) == "KOKONORA" || Upper(o->Tag()) == "NEONOR" || Upper(o->Tag()) == "TINKERISLAND" || Upper(o->Tag()) == "TINKER-ISLAND" || Upper(o->Tag()) == "DELISTO") {
 					QCol->Doing(o->Tag(), o->ID());
-					ZoneAction += " \t_enter[\"" + o->Tag() + "\"] = Scyndi.Globals." + o->Tag() + "\n";
+					ZoneAction += " \t_enter[\"" + o->Tag() + "\"] = Scyndi.Globals." + StReplace(o->Tag(),"-","") + "\n";
+					QCol->Doing("=> To Worldmap", o->Tag());
 				}
 				if (Prefixed(Upper(o->Tag()), "ZA_") || Prefixed(Upper(o->Tag()), "ZAE_") || Prefixed(Upper(o->Tag()), "ZALE_") || Prefixed(Upper(o->Tag()), "ZAEL_") || Upper(Upper(o->Tag())) == "BYE") {
 					QCol->Doing("=> Enter", o->Tag());
@@ -398,7 +427,7 @@ void ScanMap(std::string mapfile,bool forced=false) {
 					num = AskInt(config, "Crystal::Num", Tag, "How many manaments should be extracted?", num);
 					Crystal += TrSPrintF("\t__crystal[\"%s\"] = { Element = \"%s\", Num=%d }\n", Tag.c_str(), elem.c_str(), num);
 				}
-			}
+			}			
 			if (o->Kind() == KthuraKind::Obstacle) {
 				if (Upper(ExtractDir(o->texture())) == "GFX/TEXTURES/SWITCH") {
 					auto mustsave{ false };
@@ -439,6 +468,20 @@ void ScanMap(std::string mapfile,bool forced=false) {
 					if (o->data("ONCE") == "YES") QCol->Magenta("(ONCE)"); QCol->Grey("\n");
 					Clickables += "\t__click[\"" + o->Tag() + "\"] = Scyndi.Globals.FlipSwitch\n";
 				}
+				if (Prefixed(Upper(o->texture()), "GFX/TEXTURES/COGS/")) {
+					HasCogs = true;
+					QCol->Magenta("NOTE!!!\t");
+					QCol->Yellow("Cog found! Make sure to use the mapscript lib for cogs in order to to make them work!\n");
+					if (!o->Tag().size()) {
+						QCol->Warn("Cog untagged! Autotagging!");
+						std::string Tag;
+						do { config->IncValue("COGS", "Count"); Tag = "Cog: " + ToRoman(config->IntValue("Cogs", "Count")); } while (lay->HasTag(Tag));
+						QCol->Doing("= Tagging", Tag);
+						o->Tag(Tag);
+						Kthura_Save(kthmap, kthuradir + "/" + mapfile);
+					}
+					Cogs += "\t__cogs[\"" + o->Tag() + TrSPrintF("\"] = { Deg = %d, Spd = %5.2f, Dir=%d }\n", Rand.Get(0, 360), (double)Rand.Get(1, 1000) / 100.0, Rand.Get(0, 1));
+				}
 				if (Upper(o->texture()) == "GFX/OBJECTS/SCYNDI HOOK SPOT.PNG") {
 					static auto polenum{config->IntValue("Poles", "Count")};
 					if (o->Tag() == "") {
@@ -459,8 +502,9 @@ void ScanMap(std::string mapfile,bool forced=false) {
 						o->Tag("PURPLESEAL");
 						o->animspeed(0);
 						QCol->Doing("=> Tagging","Purple Seal");
-						Kthura_Save(kthmap, kthuradir + "/" + mapfile);
+						Kthura_Save(kthmap, kthuradir + "/" + mapfile);						
 					}
+					QCol->Doing("=> Purple seals", ++CountSeals);
 					Clickables += "\t__click[\"" + o->Tag() + "\"] = Scyndi.Globals.PurpleSeal\n";
 				}
 				if (Upper(o->texture()) == "GFX/TEXTURES/OBJECTS/BRANDEND.JPBF" && o->animspeed() < 0) {
@@ -585,7 +629,13 @@ void ScanMap(std::string mapfile,bool forced=false) {
 				}
 				if (Lower(o->texture()) == "gfx/mapspots/travel.png") {
 					static auto n{ 0 };
-					if (!Prefixed(o->Tag(), "TRAVELERSEMBLEM_")) {
+					if (Upper(mapfile) == "CH3_TOWN_EQUUS" || Upper(mapfile) == "CH4_DUNGEON_HIGHWAY") {
+						if (o->Tag() != "Travel_King") {
+							QCol->Doing("Tagging Traveler's Emblem", "Travel_King");
+							o->Tag("Travel_King");
+							Kthura_Save(kthmap, kthuradir + "/" + mapfile);
+						}
+					} else if (!Prefixed(o->Tag(), "TRAVELERSEMBLEM_")) {
 						std::string t;
 						do { t = "TRAVELERSEMBLEM_" + ToRoman(++n); } while (lay->HasTag(t));
 						QCol->Doing("Tagging Traveler's Emblem", t);
@@ -622,6 +672,7 @@ void ScanMap(std::string mapfile,bool forced=false) {
 		Secret += "end\n\n";
 		Crack += "end\n\n";
 		Poles += "end\n\n";
+		Cogs += "end\n\n";
 	}
 	ZoneAction += "\n\nreturn _ZA\n";
 	Clickables += "\n\nreturn _CLK\n";
@@ -631,6 +682,7 @@ void ScanMap(std::string mapfile,bool forced=false) {
 	Secret += "\n\nreturn _SECRET\n";
 	Crack += "\n\nreturn _CRACK\n";
 	Poles += "\n\nreturn _POLES\n";
+	Cogs += "\n\nreturn _COGS\n";
 	PlainSave("ZoneAction", mapfile, ZoneAction);
 	PlainSave("Clickables", mapfile, Clickables);
 	PlainSave("Pass", mapfile, Pass);
@@ -639,20 +691,29 @@ void ScanMap(std::string mapfile,bool forced=false) {
 	PlainSave("Secret", mapfile, Secret);
 	PlainSave("Crack", mapfile, Crack);
 	PlainSave("Poles", mapfile, Poles);
+	if (HasCogs) PlainSave("Cogs", mapfile, Cogs); // Only a few have these, so why bother having this file in all freaking map dirs, eh?
 	QCol->Doing("=> Black Orbs", CountBlackOrbs);
+	QCol->Doing("Compiling", mapfile);
+	auto BTC = JCR6::CreateJCR6(kthuracompiled + "/" + mapfile);
+	Slyvina::Kthura::Compile(kthmap, BTC);
+	BTC->AddString("Last Updated by MapAction:" + CurrentDate() + "; " + CurrentTime() + "\nWith MapAction Build: " + __DATE__ + "; " + __TIME__, "MapActionLog", "Store", "Jeroen P. Broks", "Just a few notes");
+	BTC->Close();
 }
 
 int main(int c,char **a) {
 	bool forced{ false };
 	JCR6::JCR6_InitRealDir();
+	JCR6::init_zlib();
 	QCol->LMagenta("Map Action!\n");
 	QCol->Doing("Coded by", "Jeroen P. Broks","\n\n");
 	configfile = ChReplace(StripExt(a[0]) + ".ini",'\\','/');
-	changelogfile = ChReplace(StripExt(a[0]) + ".changelog.ini", '\\', '/');
+	changelogfile = ChReplace(StripExt(a[0]) + ".changelog.ini", '\\', '/');	
 	for (int i = 1; i < c; ++i) forced = forced || Upper(a[i]) == "FORCE";
 	LoadConfig();
 	ScanForMaps();
 	for (auto mf : *Maps) ScanMap(mf,forced);
+	QCol->Reset();
+	QCol->Doing("Purple seals counted", CountSeals);
 	QCol->Reset();
 	return 0;
 }

@@ -192,6 +192,9 @@
     <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Units\Source\SlyvRoman.cpp">
       <Filter>Source Files\Slyvina\Units</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Slyvina\Libs\Kthura\Source\Kthura_Compiler.cpp">
+      <Filter>Source Files\Slyvina\Kthura</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\..\..\..\..\Slyvina\Libs\JCR6\3rdParty\zlib\zlib.dll">
