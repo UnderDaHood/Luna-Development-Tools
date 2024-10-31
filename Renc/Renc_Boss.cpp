@@ -1,28 +1,29 @@
-// Lic:
+// License:
+// 
 // Luna's Father
 // Renc - Boss
 // 
 // 
 // 
-// (c) Jeroen P. Broks, 2023
+// 	(c) Jeroen P. Broks, 2023, 2024
 // 
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// 		This program is free software: you can redistribute it and/or modify
+// 		it under the terms of the GNU General Public License as published by
+// 		the Free Software Foundation, either version 3 of the License, or
+// 		(at your option) any later version.
 // 
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 		This program is distributed in the hope that it will be useful,
+// 		but WITHOUT ANY WARRANTY; without even the implied warranty of
+// 		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// 		GNU General Public License for more details.
+// 		You should have received a copy of the GNU General Public License
+// 		along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-// Please note that some references to data like pictures or audio, do not automatically
-// fall under this licenses. Mostly this is noted in the respective files.
+// 	Please note that some references to data like pictures or audio, do not automatically
+// 	fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 23.11.11
-// EndLic
+// Version: 24.10.20
+// End License
 
 #include <TQSE.hpp>
 
@@ -34,6 +35,7 @@
 #include "Renc_MapData.hpp"
 #include "Renc_Config.hpp"
 #include <SlyvDir.hpp>
+#include <SlyvAsk.hpp>
 
 using namespace Slyvina;
 using namespace June19;
@@ -106,12 +108,22 @@ namespace LunaRenc {
 	static void PickFight(j19gadget* g, j19action) {
 		if (g->SelectedItem() < 0) { gBossFightPanel->Visible = false; return; }
 		gBossFightPanel->Visible = true;		
-		BossData["TUNE"]->Text = BossRec()->NewValue(BossFight(), "Tune", "MUSIC/COMBAT/BOSS/GENTUNES/");
-		BossData["HEAD"]->Text = BossRec()->Value(BossFight(), "Head");
-		BossData["NAME"]->Text = BossRec()->Value(BossFight(), "Name");
-		BossRec()->NewValue(BossFight(), "Announce_R", to_string(255));
-		BossRec()->NewValue(BossFight(), "Announce_G", to_string(0));
-		BossRec()->NewValue(BossFight(), "Announce_B", to_string(0));
+		if (Upper(BossFight()) == "SEALED") {
+			BossData["TUNE"]->Text = BossRec()->NewValue(BossFight(), "Tune", "Music/Combat/Boss/Special/Sealed.mp3");
+			BossData["HEAD"]->Text = BossRec()->Value(BossFight(), "Head");
+			BossData["NAME"]->Text = BossRec()->Value(BossFight(), "Name");
+			BossData["ANNOUNCE_R"]->Text = BossRec()->NewValue(BossFight(), "Announce_R", to_string(180));
+			BossData["ANNOUNCE_G"]->Text = BossRec()->NewValue(BossFight(), "Announce_G", to_string(0));
+			BossData["ANNOUNCE_B"]->Text = BossRec()->NewValue(BossFight(), "Announce_B", to_string(255));
+			Ask(BossBigReg[_CurrentMap], BossFight(), "ForthForce", "\7\7\7Which character should unlock her forth force? ");
+		} else {
+			BossData["TUNE"]->Text = BossRec()->NewValue(BossFight(), "Tune", "MUSIC/COMBAT/BOSS/GENTUNES/");
+			BossData["HEAD"]->Text = BossRec()->Value(BossFight(), "Head");
+			BossData["NAME"]->Text = BossRec()->Value(BossFight(), "Name");
+			BossData["ANNOUNCE_R"]->Text = BossRec()->NewValue(BossFight(), "Announce_R", to_string(255));
+			BossData["ANNOUNCE_G"]->Text = BossRec()->NewValue(BossFight(), "Announce_G", to_string(0));
+			BossData["ANNOUNCE_B"]->Text = BossRec()->NewValue(BossFight(), "Announce_B", to_string(0));
+		}
 		for (uint32 i = 0; i < 9; ++i) {
 			for (byte j = 1; j <= 3; j++) {
 				auto Tag{ TrSPrintF("SLOT%d_SKILL%d", i, j) };
@@ -192,6 +204,15 @@ namespace LunaRenc {
 		BossData["NAME"] = CreateTextfield(250, y, 300, gBossFightPanel); y += 30;
 		CreateLabel("Boss Tune:", 5, y, 250, 30, gBossFightPanel);
 		BossData["TUNE"] = CreateTextfield(250, y, 300, gBossFightPanel); y += 30;
+		BossData["ANNOUNCE_R"] = CreateTextfield(600, BossData["HEAD"]->Y(), 50, gBossFightPanel);
+		BossData["ANNOUNCE_G"] = CreateTextfield(600, BossData["NAME"]->Y(), 50, gBossFightPanel);
+		BossData["ANNOUNCE_B"] = CreateTextfield(600, BossData["TUNE"]->Y(), 50, gBossFightPanel);
+		BossData["ANNOUNCE_R"]->SetForeground(255, 0, 0);
+		BossData["ANNOUNCE_G"]->SetForeground(0,255,  0);
+		BossData["ANNOUNCE_B"]->SetForeground(0, 0, 255);
+		BossData["ANNOUNCE_R"]->SetBackground(25, 0, 0);
+		BossData["ANNOUNCE_G"]->SetBackground(0, 25, 0);
+		BossData["ANNOUNCE_B"]->SetBackground(0, 0, 25);
 		for (auto it : BossData) it.second->CBAction = EnemyFieldChange;
 		gBossFightEnemyReg = CreateListBox(5, y, 500, g->H() - (y + 10), gBossFightPanel);
 		gBossFightEnemyReg->SetForeground(255, 255, 0, 255);
